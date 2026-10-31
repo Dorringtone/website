@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Product details | Mama Mboga Fresh</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="products-data.js" defer></script>
+  <script src="product.js" defer></script>
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img
+        src="logo/logo.jpg"
+        alt="Mama Mboga Fresh home"
+        width="120"
+      >
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="product-details">
+      <p>
+        <a href="products.html">Back to all products</a>
+      </p>
+
+      <!-- Hidden until JavaScript finds a matching product -->
+      <div id="product-content" hidden>
+        <div class="product-detail-grid">
+          <img id="detail-image" alt="" width="480">
+
+          <div>
+            <h1 id="detail-name"></h1>
+
+            <p id="detail-description"></p>
+            <p id="detail-price" class="detail-price"></p>
+
+            <label for="quantity">Quantity of selling units</label>
+
+            <p id="quantity-help"></p>
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              max="99"
+              step="1"
+              value="1"
+              required
+              aria-describedby="quantity-help quantity-error"
+            >
+
+            <p id="quantity-error" role="status"></p>
+
+            <p id="item-total" class="detail-price" role="status"></p>
+
+            <p>
+              Prices and availability are subject to confirmation.
+              Delivery is charged separately.
+            </p>
+
+            <p>
+              This quantity preview does not place an order.
+              We will add the shopping cart in the next stage.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p id="product-error" role="alert" hidden>
+        We could not find that product. Please return to the
+        <a href="products.html">Products page</a>
+        and select an item.
+      </p>
+
+      <noscript>
+        <p>Please enable JavaScript to view product details.</p>
+      </noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+</body>
+</html>
