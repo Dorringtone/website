@@ -103,8 +103,14 @@ checkoutForm.addEventListener("submit", function (event) {
       "https://wa.me/254755559107?text=" +
       encodeURIComponent(message);
 
-    // Keep the cart: opening WhatsApp does not confirm an order.
-    window.location.href = whatsappUrl;
+    // Open WhatsApp separately and keep the cart page available.
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    checkoutFeedback.textContent =
+    "WhatsApp was requested in a new tab. " +
+    "If it did not open, allow pop-ups for this website and try again. " +
+    "Review your message in WhatsApp and press Send. " +
+    "Your cart has been kept.";
   } catch (error) {
     checkoutFeedback.textContent =
       "We could not prepare your order request. " +
