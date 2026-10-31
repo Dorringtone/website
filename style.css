@@ -486,3 +486,10 @@ main > section.cart-section {
     color: #a32020;
     font-weight: bold;
 }
+
+/* Related product suggestions */
+.related-products {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #dce5d9;
+}

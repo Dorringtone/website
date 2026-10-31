@@ -97,3 +97,73 @@ if (!selectedProduct) {
   productContent.hidden = false;
   updateItemTotal();
 }
+
+// Suggested companions, using identifiers from image filenames.
+const relatedProductIds = {
+  tomato: ["onion", "dania", "hoho"],
+  onion: ["tomato", "potato", "carrots"],
+  carrots: ["peas", "potato", "cabbage"],
+  potato: ["onion", "carrots", "peas"],
+  cabbage: ["carrots", "onion", "tomato"],
+  banana: ["mango", "oranges", "ginger"],
+  cucumber: ["tomato", "dania", "onion"],
+  eggplant: ["tomato", "onion", "garlic"],
+  dania: ["tomato", "onion", "hoho"],
+  spinach: ["onion", "tomato", "garlic"],
+  sukuma: ["tomato", "onion", "dania"],
+  corn: ["peas", "carrots", "potato"],
+  hoho: ["tomato", "onion", "carrots"],
+  mango: ["banana", "oranges", "cucumber"],
+  broccoli: ["carrots", "garlic", "ginger"],
+  peas: ["corn", "carrots", "potato"],
+  ginger: ["garlic", "pepper", "onion"],
+  garlic: ["ginger", "onion", "tomato"],
+  oranges: ["banana", "mango", "ginger"],
+  pumpkin: ["ginger", "garlic", "onion"],
+  pepper: ["tomato", "onion", "garlic"]
+};
+
+if (selectedProduct) {
+  const relatedSection = document.getElementById("related-products");
+  const relatedList = document.getElementById("related-list");
+
+  const suggestedIds = relatedProductIds[requestedId] || [];
+
+  suggestedIds.forEach(function (id) {
+    const product = products.find(function (entry) {
+      return CartStore.productId(entry) === id;
+    });
+
+    if (!product) {
+      return;
+    }
+
+    const card = document.createElement("article");
+
+    const image = document.createElement("img");
+    image.src = product.image;
+    image.alt = product.name;
+    image.width = 240;
+    image.loading = "lazy";
+
+    const name = document.createElement("h3");
+    name.textContent = product.name;
+
+    const price = document.createElement("p");
+    price.textContent = `KES ${product.price} per ${product.unit}`;
+
+    const link = document.createElement("a");
+    link.href = `product.html?id=${encodeURIComponent(id)}`;
+    link.className = "button-link";
+    link.textContent = "View details";
+    link.setAttribute(
+      "aria-label",
+      `View details for ${product.name}`
+    );
+
+    card.append(image, name, price, link);
+    relatedList.append(card);
+  });
+
+  relatedSection.hidden = relatedList.children.length === 0;
+}

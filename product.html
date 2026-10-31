@@ -78,20 +78,32 @@
             </p>
 
             <button id="add-to-cart" class="action-button" type="button">
-            Add to cart
+              Add to cart
             </button>
 
             <p id="cart-message" role="status"></p>
 
             <p>
-            <a href="products.html">Continue shopping</a>
-            |
-            <a href="cart.html">View cart</a>
+              <a href="products.html">Continue shopping</a>
+              |
+              <a href="cart.html">View cart</a>
             </p>
 
-            <p>Adding an item to your cart does not confirm an order.</p>            
+            <p>
+              Adding an item to your cart does not confirm an order.
+            </p>
           </div>
         </div>
+      </div>
+
+      <!-- JavaScript adds suggested product cards here -->
+      <div
+        id="related-products"
+        class="related-products"
+        hidden
+      >
+        <h2>You may also like</h2>
+        <div id="related-list" class="product-grid"></div>
       </div>
 
       <p id="product-error" role="alert" hidden>
