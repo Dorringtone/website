@@ -226,3 +226,55 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+/* Product catalogue introduction */
+main > section.catalogue {
+    padding: 28px;
+    background-color: #ffffff;
+}
+
+/* Product page navigation */
+nav.pagination {
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin: 20px 0 0;
+}
+
+.pagination button {
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #216332;
+    cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #174b28;
+}
+
+.pagination button:disabled {
+    color: #4b5563;
+    background-color: #e5e7eb;
+    cursor: default;
+}
+
+.pagination button:focus-visible {
+    outline: 3px solid #b45309;
+    outline-offset: 4px;
+}
+
+#page-status {
+    margin-top: 24px;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    main > section.catalogue {
+        padding: 20px;
+    }
+}

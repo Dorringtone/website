@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Explore vegetables and fruit from Mama Mboga Fresh at Adams Arcade, Nairobi."
+  >
+
+  <title>Mama Mboga Fresh | Products</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Run our JavaScript after the HTML has been read -->
+  <script src="products.js" defer></script>
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img
+        src="logo/logo.jpg"
+        alt="Mama Mboga Fresh home"
+        width="120"
+      >
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html" aria-current="page">Products</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="catalogue" aria-labelledby="products-heading">
+      <h1 id="products-heading">Our products</h1>
+
+      <p>
+        Explore our vegetables and fruit.
+        Prices are indicative and subject to confirmation.
+      </p>
+
+      <p>Price list updated 31 October 2026.</p>
+
+      <!-- JavaScript will place six product cards here -->
+      <div id="product-list" class="product-grid"></div>
+
+      <!-- Announce the current page when it changes -->
+      <p id="page-status" role="status"></p>
+
+      <nav class="pagination" aria-label="Product pages">
+        <button id="previous-page" type="button" disabled>
+          Previous
+        </button>
+
+        <button id="next-page" type="button" disabled>
+          Next
+        </button>
+      </nav>
+
+      <noscript>
+        <p>
+          Please enable JavaScript to browse the product catalogue.
+          You can also
+          <a href="https://wa.me/254755559107">
+            contact us on WhatsApp
+          </a>
+          for available products.
+        </p>
+      </noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+</body>
+</html>
