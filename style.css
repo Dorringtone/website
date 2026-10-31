@@ -443,3 +443,46 @@ main > section.cart-section {
         padding: 16px;
     }
 }
+
+/* Delivery and WhatsApp checkout form */
+.checkout-form {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid #dce5d9;
+}
+
+.checkout-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+    border: 1px solid #68786b;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.checkout-form textarea {
+    resize: vertical;
+}
+
+.checkout-form input:focus-visible,
+.checkout-form textarea:focus-visible {
+    outline: 3px solid #b45309;
+    outline-offset: 3px;
+}
+
+.checkout-form button {
+    max-width: 100%;
+}
+
+#checkout-feedback {
+    color: #a32020;
+    font-weight: bold;
+}

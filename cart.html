@@ -11,6 +11,7 @@
   <script src="products-data.js" defer></script>
   <script src="cart-store.js" defer></script>
   <script src="cart.js" defer></script>
+  <script src="checkout.js" defer></script>
 </head>
 
 <body>
@@ -60,6 +61,72 @@
         Continue shopping
       </a>
 
+      <form id="checkout-form" class="checkout-form">
+        <h2>Delivery details</h2>
+
+        <p>
+            We serve addresses within a 10 km radius of our Adams Arcade stall,
+            subject to location and road-access confirmation.
+        </p>
+
+        <p>
+            <label for="customer-name">Your name (required)</label>
+            <input
+            id="customer-name"
+            name="customerName"
+            type="text"
+            autocomplete="name"
+            maxlength="80"
+            required
+            >
+        </p>
+
+        <p>
+            <label for="delivery-location">
+            Estate or neighbourhood (required)
+            </label>
+
+            <input
+            id="delivery-location"
+            name="deliveryLocation"
+            type="text"
+            maxlength="160"
+            placeholder="For example: Kilimani, Example Apartments"
+            required
+            >
+        </p>
+
+        <p>
+            <label for="delivery-instructions">
+            Landmark or delivery instructions (optional)
+            </label>
+
+            <textarea
+            id="delivery-instructions"
+            name="deliveryInstructions"
+            rows="3"
+            maxlength="300"
+            placeholder="For example: Use the gate opposite the pharmacy"
+            ></textarea>
+        </p>
+
+        <p>
+            We will confirm product availability, delivery charges,
+            delivery time and payment arrangements on WhatsApp.
+        </p>
+
+        <button type="submit" class="action-button">
+            Send order request on WhatsApp
+        </button>
+
+        <p>
+            This opens WhatsApp with your order details.
+            Review the message and press Send to submit your request.
+        </p>
+
+        <p id="checkout-feedback" role="alert"></p>
+      </form>
+      
       <noscript>
         <p>Please enable JavaScript to use the cart.</p>
       </noscript>
