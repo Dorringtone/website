@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your cart | Mama Mboga Fresh</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="products-data.js" defer></script>
+  <script src="cart-store.js" defer></script>
+  <script src="cart.js" defer></script>
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img
+        src="logo/logo.jpg"
+        alt="Mama Mboga Fresh home"
+        width="120"
+      >
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html" aria-current="page">Cart</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="cart-section">
+      <h1>Your cart</h1>
+
+      <p>
+        Review your products and quantities.
+        Each quantity refers to the product's stated selling unit.
+      </p>
+
+      <p id="cart-feedback" role="status"></p>
+
+      <div id="cart-items"></div>
+
+      <p id="cart-subtotal" class="detail-price" role="status"></p>
+
+      <p>
+        Prices and availability are subject to confirmation.
+        The subtotal excludes delivery.
+      </p>
+
+      <a href="products.html" class="button-link">
+        Continue shopping
+      </a>
+
+      <noscript>
+        <p>Please enable JavaScript to use the cart.</p>
+      </noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+</body>
+</html>

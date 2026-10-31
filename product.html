@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="products-data.js" defer></script>
+  <script src="cart-store.js" defer></script>
   <script src="product.js" defer></script>
 </head>
 
@@ -29,6 +30,7 @@
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
       <a href="index.html#delivery">Delivery</a>
       <a href="index.html#contact">Contact</a>
     </nav>
@@ -75,10 +77,19 @@
               Delivery is charged separately.
             </p>
 
+            <button id="add-to-cart" class="action-button" type="button">
+            Add to cart
+            </button>
+
+            <p id="cart-message" role="status"></p>
+
             <p>
-              This quantity preview does not place an order.
-              We will add the shopping cart in the next stage.
+            <a href="products.html">Continue shopping</a>
+            |
+            <a href="cart.html">View cart</a>
             </p>
+
+            <p>Adding an item to your cart does not confirm an order.</p>            
           </div>
         </div>
       </div>
