@@ -7,11 +7,13 @@
 
   <meta
     name="description"
-    content="Browse fresh produce from Mama Mboga Fresh at Adams Arcade,
-    Nairobi. Order through WhatsApp for delivery within our service area."
+    content="Browse fresh produce from Mama Mboga Fresh at Adams Arcade, Nairobi. Order through WhatsApp for delivery within our service area."
   >
 
   <title>Mama Mboga Fresh | Home</title>
+
+  <!-- Connect this page to theSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -56,7 +58,7 @@
       <a href="#featured-products">Explore featured products</a>
     </section>
 
-    <!-- Three products to test our image paths and page structure -->
+    <!-- Featured products on the Home page -->
     <section id="featured-products">
       <h2>Featured products</h2>
 
@@ -65,38 +67,46 @@
         Price list updated 31 October 2026.
       </p>
 
-      <article>
-        <img
-          src="images/tomato.jpg"
-          alt="Fresh tomatoes"
-          width="240"
-        >
+      <!-- Group the three products for the CSS grid layout -->
+      <div class="product-grid">
 
-        <h3>Tomatoes</h3>
-        <p>KES 100 per kilogram</p>
-      </article>
+        <!-- Product 1 -->
+        <article>
+          <img
+            src="images/tomato.jpg"
+            alt="Fresh tomatoes"
+            width="240"
+          >
 
-      <article>
-        <img
-          src="images/sukuma.webp"
-          alt="Fresh sukuma wiki"
-          width="240"
-        >
+          <h3>Tomatoes</h3>
+          <p>KES 100 per kilogram</p>
+        </article>
 
-        <h3>Sukuma wiki</h3>
-        <p>KES 40 per bunch</p>
-      </article>
+        <!-- Product 2 -->
+        <article>
+          <img
+            src="images/sukuma.webp"
+            alt="Fresh sukuma wiki"
+            width="240"
+          >
 
-      <article>
-        <img
-          src="images/oranges.jpg"
-          alt="Fresh local oranges"
-          width="240"
-        >
+          <h3>Sukuma wiki</h3>
+          <p>KES 40 per bunch</p>
+        </article>
 
-        <h3>Local oranges</h3>
-        <p>KES 130 per kilogram</p>
-      </article>
+        <!-- Product 3 -->
+        <article>
+          <img
+            src="images/oranges.jpg"
+            alt="Fresh local oranges"
+            width="240"
+          >
+
+          <h3>Local oranges</h3>
+          <p>KES 130 per kilogram</p>
+        </article>
+
+      </div>
     </section>
 
     <!-- Delivery information -->
