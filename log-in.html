@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="module" src="auth-nav.js"></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,8 @@
 
   <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
   <link rel="stylesheet" href="style.css">
+
+  <script type="module" src="login.js"></script>
 </head>
 
 <body>
@@ -32,87 +35,106 @@
 
   <main id="main-content">
     <section class="information-page">
-      <h1>Log in — class demonstration</h1>
-
-      <p id="login-note">
-        This is a practice form. Account authentication is not connected.
-        Use made-up details and a sample password.
-        This page does not send or save your entries.
-      </p>
+      <h1>Log in</h1>
 
       <p>
         You do not need an account to
         <a href="products.html">browse products and request an order</a>.
       </p>
 
-      <form id="login-form" class="site-form"
-            aria-describedby="login-note">
-        <p>All fields are required.</p>
+      <p id="auth-loading" role="status">
+        Connecting to the account service…
+        If this message remains, check your internet connection and refresh.
+      </p>
+
+      <div id="signed-out" hidden>
+        <p id="login-note">
+          Enter the email address and password you used to register.
+          Both fields are required.
+        </p>
+
+        <form id="login-form" class="site-form"
+              aria-describedby="login-note">
+          <p>
+            <label for="login-email">Email address</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              autocomplete="username"
+              maxlength="254"
+              required
+            >
+          </p>
+
+          <p>
+            <label for="login-password">Password</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            >
+          </p>
+
+          <button id="login-button" class="action-button" type="submit">
+            Log in
+          </button>
+
+          <p>
+            <button id="reset-password" type="button">
+              Send password reset email
+            </button>
+          </p>
+
+          <p>
+            To reset your password, enter your email address above,
+            then select “Send password reset email”.
+          </p>
+        </form>
 
         <p>
-          <label for="login-name">Full name</label>
-          <input
-            id="login-name"
-            type="text"
-            autocomplete="off"
-            maxlength="80"
-            required
-          >
+          New customer? <a href="register.html">Create an account</a>.
+        </p>
+      </div>
+
+      <div id="signed-in" hidden>
+        <h2>Your account</h2>
+
+        <p id="account-greeting"></p>
+        <p id="account-email"></p>
+        <p id="verification-status"></p>
+
+        <p>
+          <button id="verify-email" class="action-button" type="button">
+            Send verification email
+          </button>
         </p>
 
         <p>
-          <label for="login-email">Email address</label>
-          <input
-            id="login-email"
-            type="email"
-            autocomplete="off"
-            maxlength="160"
-            required
-          >
+          <button id="check-verification" type="button">
+            I have verified my email — check again
+          </button>
         </p>
 
         <p>
-          <label for="login-phone">Phone number</label>
-          <input
-            id="login-phone"
-            type="tel"
-            autocomplete="off"
-            pattern="(\+254|0)[17][0-9]{8}"
-            aria-describedby="phone-help"
-            required
-          >
-          <span id="phone-help">
-            Kenyan mobile format: 0712345678 or +254712345678,
-            without spaces.
-          </span>
+          <button id="logout-button" class="action-button" type="button">
+            Log out
+          </button>
         </p>
 
-        <p>
-          <label for="login-password">Sample password</label>
-          <input
-            id="login-password"
-            type="password"
-            autocomplete="off"
-            minlength="8"
-            maxlength="128"
-            aria-describedby="password-help"
-            required
-          >
-          <span id="password-help">
-            Use at least eight characters. Do not use a real password.
-          </span>
-        </p>
+        <p><a href="products.html">Continue shopping</a></p>
+      </div>
 
-        <button id="login-button" class="action-button"
-                type="submit" disabled>
-          Test log-in form
-        </button>
-
-        <p id="login-status" role="status"></p>
-      </form>
+      <p id="login-status" role="status" aria-live="polite"></p>
 
       <noscript>
-        <p>Enable JavaScript to try this demonstration.</p>
+        <p>
+          Enable JavaScript to use account features.
+          You can still browse our
+          <a href="products.html">products</a>.
+        </p>
       </noscript>
 
       <p>Need help? <a href="contact.html">Contact us</a>.</p>
@@ -122,34 +144,5 @@
   <footer>
     <p>&copy; 2026 Mama Mboga Fresh.</p>
   </footer>
-
-  <script>
-    const loginForm = document.getElementById("login-form");
-    const loginName = document.getElementById("login-name");
-
-    loginName.addEventListener("input", function () {
-      loginName.setCustomValidity("");
-    });
-
-    loginForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      loginName.setCustomValidity(
-        loginName.value.trim() ? "" : "Please enter a name."
-      );
-
-      if (!loginForm.reportValidity()) {
-        return;
-      }
-
-      loginForm.reset();
-
-      document.getElementById("login-status").textContent =
-        "Form validation passed. This demonstration has not logged you in. " +
-        "No entries were sent or saved, and the form has been cleared.";
-    });
-
-    document.getElementById("login-button").disabled = false;
-  </script>
 </body>
 </html>

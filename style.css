@@ -627,3 +627,11 @@ main > section.information-page {
     background-color: #174b28;
     font-weight: bold;
 }
+
+.status-error {
+  color: #a11919;
+  background-color: #fff1f1;
+  border-left: 4px solid #a11919;
+  padding: 12px 16px;
+  font-weight: 700;
+}

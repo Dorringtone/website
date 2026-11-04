@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type="module" src="auth-nav.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create an account | Mama Mboga Fresh</title>
+
+  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="module" src="register.js"></script>
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img src="logo/logo.jpg" alt="Mama Mboga Fresh home" width="120">
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="log-in.html">Log in</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="information-page">
+      <h1>Create an account</h1>
+
+      <p>
+        Registration is optional. You can
+        <a href="products.html">browse products and request an order</a>
+        without an account.
+      </p>
+
+      <p id="register-note">
+        All fields are required. Use an email address you can access
+        so that you can verify your account and reset your password.
+      </p>
+
+      <form id="register-form" class="site-form"
+            aria-describedby="register-note">
+        <p>
+          <label for="register-name">Full name</label>
+          <input
+            id="register-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            maxlength="80"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="register-email">Email address</label>
+          <input
+            id="register-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            maxlength="254"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="register-password">Password</label>
+          <input
+            id="register-password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="128"
+            aria-describedby="register-password-help"
+            required
+          >
+          <span id="register-password-help">
+            Use at least eight characters and choose a password
+            you do not use elsewhere.
+          </span>
+        </p>
+
+        <p>
+          <label for="register-confirm">Confirm password</label>
+          <input
+            id="register-confirm"
+            name="confirm-password"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="128"
+            required
+          >
+        </p>
+
+        <button id="register-button" class="action-button"
+                type="submit" disabled>
+          Create account
+        </button>
+      </form>
+
+      <p id="register-status" role="status" aria-live="polite">
+        Connecting to the account service…
+        If this message remains, check your internet connection and refresh.
+      </p>
+
+      <p id="account-next" hidden>
+        <a href="log-in.html">Go to your account</a>
+        to check your email verification status or log out.
+      </p>
+
+      <p>
+        Already registered? <a href="log-in.html">Log in</a>.
+      </p>
+
+      <noscript>
+        <p>Enable JavaScript to create an account.</p>
+      </noscript>
+
+      <p>Need help? <a href="contact.html">Contact us</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+</body>
+</html>
