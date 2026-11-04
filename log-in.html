@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Log in | Mama Mboga Fresh</title>
+
+  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img src="logo/logo.jpg" alt="Mama Mboga Fresh home" width="120">
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="contact.html">Contact</a>
+      <a href="log-in.html" aria-current="page">Log in</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="information-page">
+      <h1>Log in — class demonstration</h1>
+
+      <p id="login-note">
+        This is a practice form. Account authentication is not connected.
+        Use made-up details and a sample password.
+        This page does not send or save your entries.
+      </p>
+
+      <p>
+        You do not need an account to
+        <a href="products.html">browse products and request an order</a>.
+      </p>
+
+      <form id="login-form" class="site-form"
+            aria-describedby="login-note">
+        <p>All fields are required.</p>
+
+        <p>
+          <label for="login-name">Full name</label>
+          <input
+            id="login-name"
+            type="text"
+            autocomplete="off"
+            maxlength="80"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="login-email">Email address</label>
+          <input
+            id="login-email"
+            type="email"
+            autocomplete="off"
+            maxlength="160"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="login-phone">Phone number</label>
+          <input
+            id="login-phone"
+            type="tel"
+            autocomplete="off"
+            pattern="(\+254|0)[17][0-9]{8}"
+            aria-describedby="phone-help"
+            required
+          >
+          <span id="phone-help">
+            Kenyan mobile format: 0712345678 or +254712345678,
+            without spaces.
+          </span>
+        </p>
+
+        <p>
+          <label for="login-password">Sample password</label>
+          <input
+            id="login-password"
+            type="password"
+            autocomplete="off"
+            minlength="8"
+            maxlength="128"
+            aria-describedby="password-help"
+            required
+          >
+          <span id="password-help">
+            Use at least eight characters. Do not use a real password.
+          </span>
+        </p>
+
+        <button id="login-button" class="action-button"
+                type="submit" disabled>
+          Test log-in form
+        </button>
+
+        <p id="login-status" role="status"></p>
+      </form>
+
+      <noscript>
+        <p>Enable JavaScript to try this demonstration.</p>
+      </noscript>
+
+      <p>Need help? <a href="contact.html">Contact us</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const loginName = document.getElementById("login-name");
+
+    loginName.addEventListener("input", function () {
+      loginName.setCustomValidity("");
+    });
+
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      loginName.setCustomValidity(
+        loginName.value.trim() ? "" : "Please enter a name."
+      );
+
+      if (!loginForm.reportValidity()) {
+        return;
+      }
+
+      loginForm.reset();
+
+      document.getElementById("login-status").textContent =
+        "Form validation passed. This demonstration has not logged you in. " +
+        "No entries were sent or saved, and the form has been cleared.";
+    });
+
+    document.getElementById("login-button").disabled = false;
+  </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact | Mama Mboga Fresh</title>
+
+  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <header>
+    <a href="index.html">
+      <img src="logo/logo.jpg" alt="Mama Mboga Fresh home" width="120">
+    </a>
+
+    <p>Mama Mboga Fresh</p>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="index.html#delivery">Delivery</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="log-in.html">Log in</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="information-page">
+      <h1>Contact us</h1>
+
+      <p>
+        Ask about our produce, availability or delivery around Adams Arcade.
+        To request several products, please use our
+        <a href="products.html">catalogue and shopping cart</a>.
+      </p>
+
+      <h2>Visit or call us</h2>
+
+      <p>Adams Arcade, Ngong Road, Nairobi.</p>
+
+      <p>
+        Phone:
+        <a href="tel:+254755559107">0755 559 107</a>
+      </p>
+
+      <p>
+        <a href="https://wa.me/254755559107">
+          Contact us on WhatsApp
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www.google.com/maps/search/?api=1&amp;query=-1.30075380266265%2C36.77947712736247"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View our stall location on Google Maps (opens in a new tab)
+        </a>
+      </p>
+
+      <h2>Opening hours</h2>
+
+      <p>Monday–Saturday: 8:00 AM–8:00 PM EAT.</p>
+      <p>Sunday: Closed.</p>
+
+      <h2>Send an enquiry</h2>
+
+      <p id="enquiry-note">
+        This form prepares a WhatsApp message in a new tab.
+        Review the message and press Send in WhatsApp.
+        Your selected contact method tells us how you would prefer a reply.
+      </p>
+
+      <form
+        id="enquiry-form"
+        class="site-form"
+        aria-describedby="enquiry-note"
+      >
+        <p>
+          <label for="enquiry-name">Your name (required)</label>
+          <input
+            id="enquiry-name"
+            type="text"
+            autocomplete="name"
+            maxlength="80"
+            required
+          >
+        </p>
+
+        <p>
+          <label for="enquiry-location">
+            Estate or neighbourhood (optional)
+          </label>
+          <input
+            id="enquiry-location"
+            type="text"
+            maxlength="160"
+          >
+        </p>
+
+        <!-- Preferred method for receiving a reply -->
+        <fieldset class="contact-preferences">
+          <legend>How should we contact you?</legend>
+
+          <label>
+            <input
+              type="radio"
+              name="contact-method"
+              value="Phone call"
+              required
+            >
+            Phone call
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="contact-method"
+              value="WhatsApp"
+              checked
+            >
+            WhatsApp
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="contact-method"
+              value="Email"
+            >
+            Email
+          </label>
+        </fieldset>
+
+        <p id="reply-phone-group">
+          <label for="reply-phone">Your phone number (required)</label>
+          <input
+            id="reply-phone"
+            type="tel"
+            autocomplete="tel"
+            pattern="(\+254|0)[17][0-9]{8}"
+            aria-describedby="reply-phone-help"
+            required
+          >
+          <span id="reply-phone-help">
+            For example: 0712345678 or +254712345678, without spaces.
+          </span>
+        </p>
+
+        <p id="reply-email-group" hidden>
+          <label for="reply-email">Your email address (required)</label>
+          <input
+            id="reply-email"
+            type="email"
+            autocomplete="email"
+            maxlength="160"
+            disabled
+          >
+        </p>
+
+        <p>
+          <label for="enquiry-message">Your message (required)</label>
+          <textarea
+            id="enquiry-message"
+            rows="5"
+            maxlength="1000"
+            required
+          ></textarea>
+        </p>
+
+        <button
+          id="enquiry-button"
+          class="action-button"
+          type="submit"
+          disabled
+        >
+          Open enquiry in WhatsApp
+        </button>
+
+        <p id="enquiry-status" role="status"></p>
+      </form>
+
+      <noscript>
+        <p>
+          Enable JavaScript to use the form, or use the WhatsApp link above.
+        </p>
+      </noscript>
+
+      <!-- Clicking the preview opens Google Maps in a new tab -->
+      <div class="stall-location">
+        <h2>Find our stall</h2>
+
+        <p>Adams Arcade, Ngong Road, Nairobi.</p>
+
+        <p id="map-help">
+          Select the map to open our stall location in Google Maps
+          in a new tab.
+        </p>
+
+        <a
+          class="stall-map-link"
+          href="https://www.google.com/maps/search/?api=1&amp;query=-1.30075380266265%2C36.77947712736247"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open our stall location in Google Maps (new tab)"
+          aria-describedby="map-help"
+        >
+          <iframe
+            src="https://maps.google.com/maps?q=-1.30075380266265,36.77947712736247&amp;z=15&amp;output=embed"
+            title="Map showing the Mama Mboga Fresh stall location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+            aria-hidden="true"
+          ></iframe>
+
+          <span>Open in Google Maps ↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mama Mboga Fresh.</p>
+  </footer>
+
+  <script>
+    const enquiryForm = document.getElementById("enquiry-form");
+    const enquiryName = document.getElementById("enquiry-name");
+    const enquiryLocation = document.getElementById("enquiry-location");
+    const enquiryMessage = document.getElementById("enquiry-message");
+    const enquiryStatus = document.getElementById("enquiry-status");
+
+    const replyPhone = document.getElementById("reply-phone");
+    const replyEmail = document.getElementById("reply-email");
+    const phoneGroup = document.getElementById("reply-phone-group");
+    const emailGroup = document.getElementById("reply-email-group");
+
+    // Show and require only the relevant reply contact field.
+    function updateReplyFields() {
+      const method = enquiryForm.querySelector(
+        'input[name="contact-method"]:checked'
+      ).value;
+
+      const useEmail = method === "Email";
+
+      emailGroup.hidden = !useEmail;
+      replyEmail.disabled = !useEmail;
+      replyEmail.required = useEmail;
+
+      phoneGroup.hidden = useEmail;
+      replyPhone.disabled = useEmail;
+      replyPhone.required = !useEmail;
+    }
+
+    enquiryForm.querySelectorAll(
+      'input[name="contact-method"]'
+    ).forEach(function (radio) {
+      radio.addEventListener("change", updateReplyFields);
+    });
+
+    updateReplyFields();
+
+    // Clear custom validation messages when the customer types.
+    [enquiryName, enquiryMessage].forEach(function (input) {
+      input.addEventListener("input", function () {
+        input.setCustomValidity("");
+      });
+    });
+
+    enquiryForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      enquiryStatus.textContent = "";
+
+      enquiryName.setCustomValidity(
+        enquiryName.value.trim() ? "" : "Please enter your name."
+      );
+
+      enquiryMessage.setCustomValidity(
+        enquiryMessage.value.trim() ? "" : "Please enter your message."
+      );
+
+      if (!enquiryForm.reportValidity()) {
+        return;
+      }
+
+      const preferredMethod = enquiryForm.querySelector(
+        'input[name="contact-method"]:checked'
+      ).value;
+
+      const replyDetails = preferredMethod === "Email"
+        ? replyEmail.value.trim()
+        : replyPhone.value.trim();
+
+      const message = [
+        "Hello Mama Mboga Fresh, I have an enquiry:",
+        "",
+        `Name: ${enquiryName.value.trim()}`,
+        `Location: ${enquiryLocation.value.trim() || "Not provided"}`,
+        `Preferred reply method: ${preferredMethod}`,
+        `Reply contact: ${replyDetails}`,
+        "",
+        enquiryMessage.value.trim()
+      ].join("\n");
+
+      const url =
+        "https://wa.me/254755559107?text=" +
+        encodeURIComponent(message);
+
+      window.open(url, "_blank", "noopener,noreferrer");
+
+      enquiryStatus.textContent =
+        "WhatsApp was requested in a new tab. " +
+        "If it did not open, allow pop-ups and try again. " +
+        "Review the message and press Send in WhatsApp.";
+    });
+
+    document.getElementById("enquiry-button").disabled = false;
+  </script>
+</body>
+</html>
