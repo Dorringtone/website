@@ -30,7 +30,7 @@ function displayProducts() {
     image.alt = product.name;
     image.width = 240;
 
-    const name = document.createElement("h3");
+    const name = document.createElement("h2");
     name.textContent = product.name;
 
     const price = document.createElement("p");
