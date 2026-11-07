@@ -809,3 +809,21 @@ footer .back-to-top { color: var(--green-dark); }
         box-shadow: var(--card-shadow);
     }
 }
+
+
+/* Home page opening status */
+.stall-status-banner {
+    margin-block: 24px;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--tint);
+}
+
+.stall-status-banner h2 {
+    margin: 0 0 4px;
+    font-size: 1.125rem;
+}
+
+.stall-status-banner p { margin: 0; }
+.stall-status-banner p + p { margin-top: 4px; }

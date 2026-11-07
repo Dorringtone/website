@@ -15,6 +15,7 @@
   <!-- Connect this page to the CSS file -->
   <link rel="stylesheet" href="style.css">
   <script type="module" src="auth-nav.js"></script>
+  <script src="home-status.js" defer></script>
 </head>
 
 <body id="page-top">
@@ -53,6 +54,12 @@
       </p>
       <a href="#featured-products">Explore featured products</a>
     </section>
+
+    <aside class="stall-status-banner" aria-labelledby="stall-status-title">
+      <h2 id="stall-status-title">Stall opening status</h2>
+      <p id="stall-status">Monday–Saturday, 8:00 a.m.–8:00 p.m. Kenya time. Closed on Sundays.</p>
+      <p><a href="#opening-hours">View opening hours</a> · Status follows our weekly schedule.</p>
+    </aside>
 
     <!-- Featured products on the Home page -->
     <section id="featured-products">
@@ -105,7 +112,7 @@
         <h2>Visit or contact us</h2>
         <p>Adams Arcade, Ngong Road, Nairobi.</p>
 
-        <table class="opening-hours">
+        <table id="opening-hours" class="opening-hours">
           <caption>Mama Mboga Fresh opening hours</caption>
           <thead>
             <tr>
