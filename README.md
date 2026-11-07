@@ -40,6 +40,14 @@ Customers can browse products, select quantities, build a shopping cart and prep
 
 Preview Home, Contact and Cart at desktop width and around 360px. On Cart, remove the last product and confirm keyboard focus returns to **Continue shopping**.
 
+## Session 8 responsive layout
+
+- Product and related-product grids start with one column, use two from 768 px, and use three from 1024 px.
+- The header uses Flexbox. The menu wraps below the brand at smaller widths, and the links sit beside it when there is room on desktop. Navigation targets are at least 44 px tall.
+- Product details use two columns from 768 px. The contact form and cart checkout stay stacked until 1024 px so the fields have more room on tablets.
+
+In DevTools, try 375, 768 and 1280 px. Check the catalogue and related products, tab through the navigation, and make sure the cart and contact forms fit without sideways scrolling.
+
 ## How ordering works
 
 1. Browse the product catalogue.
