@@ -1,5 +1,6 @@
 const checkoutForm = document.getElementById("checkout-form");
 const checkoutFeedback = document.getElementById("checkout-feedback");
+const checkoutButton = document.getElementById("checkout-button");
 
 const customerName = document.getElementById("customer-name");
 const deliveryLocation = document.getElementById("delivery-location");
@@ -107,13 +108,16 @@ checkoutForm.addEventListener("submit", function (event) {
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
     checkoutFeedback.textContent =
-    "WhatsApp was requested in a new tab. " +
-    "If it did not open, allow pop-ups for this website and try again. " +
-    "Review your message in WhatsApp and press Send. " +
-    "Your cart has been kept.";
+      "WhatsApp was requested in a new tab. " +
+      "If it did not open, allow pop-ups for this website and try again. " +
+      "Review your message in WhatsApp and press Send. " +
+      "Your cart has been kept.";
   } catch (error) {
     checkoutFeedback.textContent =
       "We could not prepare your order request. " +
       "Please refresh the cart and try again.";
   }
 });
+
+// Enable checkout only after its submit handler is ready.
+checkoutButton.disabled = false;
