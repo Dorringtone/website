@@ -30,6 +30,16 @@ Customers can browse products, select quantities, build a shopping cart and prep
 - Clear error messages for failed account actions.
 - Business logo displayed as the browser favicon.
 
+## Session 7 design updates
+
+- The welcome section uses the existing tomato photograph as a decorative CSS background.
+- Home pairs delivery and opening hours; Contact pairs the enquiry form with hours and the map; Cart pairs the order summary with delivery details. These layouts stack on phones.
+- Shared colours, subtle product card shadows and striped hours tables keep the pages consistent.
+- The fixed **WhatsApp help** link opens a general chat. Use the checkout button to include order and delivery details.
+- On wider, taller screens the header stays at the top as you scroll, and a floating up arrow above WhatsApp help returns you to the top. On smaller screens the arrow stays in the footer and the header scrolls normally.
+
+Preview Home, Contact and Cart at desktop width and around 360px. On Cart, remove the last product and confirm keyboard focus returns to **Continue shopping**.
+
 ## How ordering works
 
 1. Browse the product catalogue.

@@ -133,7 +133,7 @@ function displayCart() {
         if (nextButton) {
           nextButton.focus();
         } else {
-          document.querySelector(".cart-section > a").focus();
+          document.getElementById("continue-shopping").focus();
         }
       } catch (error) {
         cartFeedback.textContent =
