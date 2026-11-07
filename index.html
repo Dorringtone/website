@@ -14,8 +14,10 @@
   <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
   <!-- Connect this page to the CSS file -->
   <link rel="stylesheet" href="style.css">
+  <script src="navigation.js" defer></script>
   <script type="module" src="auth-nav.js"></script>
   <script src="home-status.js" defer></script>
+  <script src="home-faq.js" defer></script>
 </head>
 
 <body id="page-top">
@@ -30,7 +32,10 @@
 
     <p>Mama Mboga Fresh</p>
 
-    <nav aria-label="Main navigation">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" hidden>
+      <span aria-hidden="true">☰</span> Menu
+    </button>
+    <nav id="main-menu" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
       <a href="products.html">Products</a>
       <a href="cart.html">Cart</a>
@@ -136,6 +141,34 @@
         <p><a href="https://wa.me/254755559107">Contact us on WhatsApp</a></p>
       </section>
     </div>
+
+    <section class="home-faq" id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3 class="faq-heading">How do I place an order?</h3>
+        <div class="faq-answer" id="faq-answer-1">
+          <p>Browse the <a href="products.html">products</a>, add what you need to your cart, then enter your delivery details. Open WhatsApp from the cart, review the prepared message and press Send. We’ll confirm your order on WhatsApp.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-heading">Do I need an account to order?</h3>
+        <div class="faq-answer" id="faq-answer-2">
+          <p>No. You can browse, use the cart and send an order request on WhatsApp without registering or logging in.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-heading">Do you deliver to my neighbourhood?</h3>
+        <div class="faq-answer" id="faq-answer-3">
+          <p>We serve addresses within 10 km of our Adams Arcade stall in Nairobi, subject to address and road access confirmation. Enter your estate or neighbourhood in the <a href="cart.html">cart</a> and add a landmark if it helps us find you.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-heading">Does the cart subtotal include delivery?</h3>
+        <div class="faq-answer" id="faq-answer-4">
+          <p>No. We confirm product availability, the delivery fee, timing, the final total and payment arrangements on WhatsApp.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>

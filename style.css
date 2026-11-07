@@ -827,3 +827,85 @@ footer .back-to-top { color: var(--green-dark); }
 
 .stall-status-banner p { margin: 0; }
 .stall-status-banner p + p { margin-top: 4px; }
+
+
+/* Session 10: mobile navigation and the Home FAQ */
+.menu-btn {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 6px 10px;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--green-dark);
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (width < 768px) {
+    header.has-menu-toggle {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+
+    header.has-menu-toggle img { width: 44px; }
+
+    header.has-menu-toggle > p {
+        font-size: clamp(16px, 4vw, 20px);
+        overflow-wrap: anywhere;
+        line-height: 1.2;
+    }
+
+    .has-menu-toggle .menu-btn:not([hidden]) { display: inline-flex; }
+
+    .has-menu-toggle #main-menu {
+        display: none;
+        grid-column: 1 / -1;
+        flex-direction: column;
+        border-top: 1px solid var(--line);
+    }
+
+    .has-menu-toggle #main-menu.open { display: flex; }
+    .has-menu-toggle #main-menu a { padding-inline: 8px; }
+}
+
+.home-faq { border: 1px solid var(--line); }
+.home-faq .faq-item + .faq-item { border-top: 1px solid var(--line); }
+.home-faq .faq-heading { margin: 0; padding-block: 8px; font-size: 1.125rem; }
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--green-dark);
+    font: inherit;
+    font-weight: bold;
+    text-align: start;
+    cursor: pointer;
+}
+
+.menu-btn:hover, .faq-question:hover,
+.menu-btn[aria-expanded="true"], .faq-question[aria-expanded="true"] {
+    background: var(--tint);
+}
+
+.menu-btn:focus-visible, .faq-question:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+.faq-icon::before { content: "+"; }
+.faq-question[aria-expanded="true"] .faq-icon::before { content: "−"; }
+.faq-answer { padding-inline: 10px; }
+.faq-answer p { max-width: 65ch; margin: 0 0 12px; }

@@ -8,6 +8,7 @@
 
   <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
   <link rel="stylesheet" href="style.css">
+  <script src="navigation.js" defer></script>
   <script type="module" src="auth-nav.js"></script>
   <script type="module" src="login.js"></script>
 </head>
@@ -22,7 +23,10 @@
 
     <p>Mama Mboga Fresh</p>
 
-    <nav aria-label="Main navigation">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" hidden>
+      <span aria-hidden="true">☰</span> Menu
+    </button>
+    <nav id="main-menu" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
       <a href="cart.html">Cart</a>

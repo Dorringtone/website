@@ -48,6 +48,12 @@ Preview Home, Contact and Cart at desktop width and around 360px. On Cart, remov
 
 In DevTools, try 375, 768 and 1280 px. Check the catalogue and related products, tab through the navigation, and make sure the cart and contact forms fit without sideways scrolling.
 
+## Session 10: mobile menu and Home FAQ
+
+- All seven pages use `navigation.js`. Below 768 px, **Menu** opens and closes the navigation. Tab to the button and press Enter or Space. Escape closes the open menu and returns focus to the button when focus is inside the menu. Choosing a link also closes it.
+- Home uses `home-faq.js` to let customers expand four answers about ordering, accounts, coverage and delivery charges. With JavaScript off, the full navigation and all FAQ answers remain visible.
+- Check the menu at 375 and 768 px. On Home, open **Delivery** from the mobile menu and confirm the menu closes and the page jumps to the delivery section.
+
 ## How ordering works
 
 1. Browse the product catalogue.
@@ -142,6 +148,9 @@ No custom application server or product/order database is currently used.
 | `firebase-config.js` | Firebase connection settings and shared Authentication instance |
 | `login.js` | Login, logout, password reset and email verification controls |
 | `register.js` | Account creation, display name and verification email |
+| `navigation.js` | Shared mobile menu |
+| `home-faq.js` | Home FAQ controls |
+| `home-status.js` | Home opening status in Kenya time |
 | `auth-nav.js` | Navigation updates based on login status |
 | `images/` | Product photographs |
 | `logo/` | Business logo |
