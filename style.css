@@ -635,3 +635,27 @@ main > section.information-page {
   padding: 12px 16px;
   font-weight: 700;
 }
+
+/* Align the caption and cells with the surrounding text. */
+.opening-hours {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.opening-hours caption {
+  padding-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Leave space between the day and hours columns. */
+.opening-hours th,
+.opening-hours td {
+  padding: 0.4rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.opening-hours th:first-child {
+  padding-right: 1rem;
+}
