@@ -909,3 +909,28 @@ footer .back-to-top { color: var(--green-dark); }
 .faq-question[aria-expanded="true"] .faq-icon::before { content: "−"; }
 .faq-answer { padding-inline: 10px; }
 .faq-answer p { max-width: 65ch; margin: 0 0 12px; }
+
+
+/* Session 11: inline errors and a short summary for each form. */
+.site-form [aria-invalid="true"],
+.checkout-form [aria-invalid="true"] {
+    border-color: #a11919;
+    box-shadow: 0 0 0 1px #a11919;
+}
+
+.validation-error {
+    display: block;
+    margin-top: 6px;
+    color: #a11919;
+    font-size: 0.9375rem;
+    font-weight: bold;
+}
+
+.validation-summary:empty {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.site-form .validation-error:empty,
+.validation-error:empty { display: none; }

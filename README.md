@@ -54,6 +54,13 @@ In DevTools, try 375, 768 and 1280 px. Check the catalogue and related products,
 - Home uses `home-faq.js` to let customers expand four answers about ordering, accounts, coverage and delivery charges. With JavaScript off, the full navigation and all FAQ answers remain visible.
 - Check the menu at 375 and 768 px. On Home, open **Delivery** from the mobile menu and confirm the menu closes and the page jumps to the delivery section.
 
+## Session 11: form validation and debugging
+
+- Contact, Cart checkout, Log in and Register show errors beside the relevant fields. Try a blank submission and check that focus moves to the first field with an error. Correct it and check that its message clears.
+- On Contact, switch from phone to email after triggering a phone error. The hidden phone field should no longer be flagged. On Cart, check that an invalid quantity still blocks checkout.
+- On Register, try mismatched passwords, then correct them. On Log in, password reset needs only a valid email address. Account requests and error responses still use Firebase.
+- In DevTools, set a breakpoint on the `const first = updateSummary();` line in `form-validation.js` and submit a blank form. Inspect the fields with `aria-invalid`, then resume to see where focus moves.
+
 ## How ordering works
 
 1. Browse the product catalogue.
@@ -156,7 +163,7 @@ No custom application server or product/order database is currently used.
 | `logo/` | Business logo |
 | `README.md` | Project overview and instructions |
 
-The contact page currently includes its enquiry JavaScript within `contact.html`.
+The Contact page uses `contact.js`. The Contact, Cart checkout, Log in and Register forms share `form-validation.js`.
 
 ## Run locally
 

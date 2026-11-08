@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="navigation.js" defer></script>
   <script type="module" src="auth-nav.js"></script>
+  <script type="module" src="contact.js"></script>
 </head>
 
 <body id="page-top">
@@ -68,7 +69,9 @@
                 autocomplete="name"
                 maxlength="80"
                 required
+                aria-describedby="enquiry-name-error"
               >
+              <span id="enquiry-name-error" class="validation-error"></span>
             </p>
 
             <p>
@@ -79,7 +82,9 @@
                 id="enquiry-location"
                 type="text"
                 maxlength="160"
+                aria-describedby="enquiry-location-error"
               >
+              <span id="enquiry-location-error" class="validation-error"></span>
             </p>
 
             <!-- Preferred method for receiving a reply -->
@@ -123,12 +128,13 @@
                 type="tel"
                 autocomplete="tel"
                 pattern="(\+254|0)[17][0-9]{8}"
-                aria-describedby="reply-phone-help"
+                aria-describedby="reply-phone-help reply-phone-error"
                 required
               >
               <span id="reply-phone-help">
                 For example: 0712345678 or +254712345678, without spaces.
               </span>
+              <span id="reply-phone-error" class="validation-error"></span>
             </p>
 
             <p id="reply-email-group" hidden>
@@ -139,7 +145,9 @@
                 autocomplete="email"
                 maxlength="160"
                 disabled
+                aria-describedby="reply-email-error"
               >
+              <span id="reply-email-error" class="validation-error"></span>
             </p>
 
             <p>
@@ -149,8 +157,12 @@
                 rows="5"
                 maxlength="1000"
                 required
+                aria-describedby="enquiry-message-error"
               ></textarea>
+              <span id="enquiry-message-error" class="validation-error"></span>
             </p>
+
+            <p id="enquiry-form-validation" class="validation-summary status-error" role="status"></p>
 
             <button
               id="enquiry-button"
@@ -266,98 +278,5 @@
     WhatsApp help
   </a>
 
-  <script>
-    const enquiryForm = document.getElementById("enquiry-form");
-    const enquiryName = document.getElementById("enquiry-name");
-    const enquiryLocation = document.getElementById("enquiry-location");
-    const enquiryMessage = document.getElementById("enquiry-message");
-    const enquiryStatus = document.getElementById("enquiry-status");
-
-    const replyPhone = document.getElementById("reply-phone");
-    const replyEmail = document.getElementById("reply-email");
-    const phoneGroup = document.getElementById("reply-phone-group");
-    const emailGroup = document.getElementById("reply-email-group");
-
-    // Show and require only the relevant reply contact field.
-    function updateReplyFields() {
-      const method = enquiryForm.querySelector(
-        'input[name="contact-method"]:checked'
-      ).value;
-
-      const useEmail = method === "Email";
-
-      emailGroup.hidden = !useEmail;
-      replyEmail.disabled = !useEmail;
-      replyEmail.required = useEmail;
-
-      phoneGroup.hidden = useEmail;
-      replyPhone.disabled = useEmail;
-      replyPhone.required = !useEmail;
-    }
-
-    enquiryForm.querySelectorAll(
-      'input[name="contact-method"]'
-    ).forEach(function (radio) {
-      radio.addEventListener("change", updateReplyFields);
-    });
-
-    updateReplyFields();
-
-    // Clear custom validation messages when the customer types.
-    [enquiryName, enquiryMessage].forEach(function (input) {
-      input.addEventListener("input", function () {
-        input.setCustomValidity("");
-      });
-    });
-
-    enquiryForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      enquiryStatus.textContent = "";
-
-      enquiryName.setCustomValidity(
-        enquiryName.value.trim() ? "" : "Please enter your name."
-      );
-
-      enquiryMessage.setCustomValidity(
-        enquiryMessage.value.trim() ? "" : "Please enter your message."
-      );
-
-      if (!enquiryForm.reportValidity()) {
-        return;
-      }
-
-      const preferredMethod = enquiryForm.querySelector(
-        'input[name="contact-method"]:checked'
-      ).value;
-
-      const replyDetails = preferredMethod === "Email"
-        ? replyEmail.value.trim()
-        : replyPhone.value.trim();
-
-      const message = [
-        "Hello Mama Mboga Fresh, I have an enquiry:",
-        "",
-        `Name: ${enquiryName.value.trim()}`,
-        `Location: ${enquiryLocation.value.trim() || "Not provided"}`,
-        `Preferred reply method: ${preferredMethod}`,
-        `Reply contact: ${replyDetails}`,
-        "",
-        enquiryMessage.value.trim()
-      ].join("\n");
-
-      const url =
-        "https://wa.me/254755559107?text=" +
-        encodeURIComponent(message);
-
-      window.open(url, "_blank", "noopener,noreferrer");
-
-      enquiryStatus.textContent =
-        "WhatsApp was requested in a new tab. " +
-        "If it did not open, allow pop-ups and try again. " +
-        "Review the message and press Send in WhatsApp.";
-    });
-
-    document.getElementById("enquiry-button").disabled = false;
-  </script>
 </body>
 </html>

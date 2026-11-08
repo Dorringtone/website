@@ -1,3 +1,4 @@
+import { emailError, requiredText, setUpValidation, textLength } from "./form-validation.js";
 import { auth } from "./firebase-config.js";
 
 import {
@@ -43,16 +44,19 @@ onAuthStateChanged(
   }
 );
 
-nameInput.addEventListener("input", function () {
-  nameInput.setCustomValidity("");
-});
-
-function clearPasswordError() {
-  confirmInput.setCustomValidity("");
-}
-
-passwordInput.addEventListener("input", clearPasswordError);
-confirmInput.addEventListener("input", clearPasswordError);
+const validate = setUpValidation(form, new Map([
+  [nameInput, requiredText("your full name", 80)],
+  [emailInput, emailError],
+  [passwordInput, field => {
+    if (!field.value) return "Choose a password.";
+    if (field.value.length < 8) return "Use at least eight characters.";
+    return textLength(128)(field);
+  }],
+  [confirmInput, field => {
+    if (!field.value) return "Enter your password again.";
+    return field.value === passwordInput.value ? "" : "Your passwords do not match.";
+  }]
+]));
 
 function registrationError(error) {
   switch (error.code) {
@@ -85,19 +89,9 @@ form.addEventListener("submit", async function (event) {
     return;
   }
 
-  nameInput.setCustomValidity(
-    nameInput.value.trim() ? "" : "Please enter your name."
-  );
-
-  confirmInput.setCustomValidity(
-    passwordInput.value === confirmInput.value
-      ? ""
-      : "Your passwords do not match."
-  );
-
-  if (!form.reportValidity()) {
-    return;
-  }
+  status.textContent = "";
+  status.classList.remove("status-error");
+  if (!validate()) return;
 
   busy = true;
   button.disabled = true;

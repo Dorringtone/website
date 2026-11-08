@@ -63,7 +63,9 @@
             autocomplete="name"
             maxlength="80"
             required
+            aria-describedby="register-name-error"
           >
+          <span id="register-name-error" class="validation-error"></span>
         </p>
 
         <p>
@@ -75,7 +77,9 @@
             autocomplete="email"
             maxlength="254"
             required
+            aria-describedby="register-email-error"
           >
+          <span id="register-email-error" class="validation-error"></span>
         </p>
 
         <p>
@@ -87,13 +91,14 @@
             autocomplete="new-password"
             minlength="8"
             maxlength="128"
-            aria-describedby="register-password-help"
+            aria-describedby="register-password-help register-password-error"
             required
           >
           <span id="register-password-help">
             Use at least eight characters and choose a password
             you do not use elsewhere.
           </span>
+          <span id="register-password-error" class="validation-error"></span>
         </p>
 
         <p>
@@ -106,8 +111,12 @@
             minlength="8"
             maxlength="128"
             required
+            aria-describedby="register-confirm-error"
           >
+          <span id="register-confirm-error" class="validation-error"></span>
         </p>
+
+        <p id="register-form-validation" class="validation-summary status-error" role="status"></p>
 
         <button id="register-button" class="action-button"
                 type="submit" disabled>

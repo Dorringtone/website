@@ -1,3 +1,4 @@
+import { emailError, setUpValidation } from "./form-validation.js";
 import { auth } from "./firebase-config.js";
 
 import {
@@ -27,6 +28,10 @@ const checkButton = document.getElementById("check-verification");
 
 const buttons = document.querySelectorAll("main button");
 let busy = false;
+const validate = setUpValidation(loginForm, new Map([
+  [emailInput, emailError],
+  [passwordInput, field => field.value ? "" : "Enter your password."]
+]));
 
 // Display a message and apply error styling only when needed.
 function showMessage(message, isError = false) {
@@ -115,9 +120,9 @@ onAuthStateChanged(
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  if (busy || !loginForm.reportValidity()) {
-    return;
-  }
+  if (busy) return;
+  showMessage("");
+  if (!validate()) return;
 
   setBusy(true);
   showMessage("Logging in…");
@@ -148,9 +153,8 @@ document.getElementById("reset-password").addEventListener(
     emailInput.value = emailInput.value.trim();
 
     // Resetting a password requires the email address only.
-    if (!emailInput.reportValidity()) {
-      return;
-    }
+    showMessage("");
+    if (!validate([emailInput])) return;
 
     setBusy(true);
     showMessage("Requesting a password reset email…");

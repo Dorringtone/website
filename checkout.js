@@ -1,3 +1,5 @@
+import { requiredText, setUpValidation, textLength } from "./form-validation.js";
+
 const checkoutForm = document.getElementById("checkout-form");
 const checkoutFeedback = document.getElementById("checkout-feedback");
 const checkoutButton = document.getElementById("checkout-button");
@@ -8,31 +10,18 @@ const deliveryInstructions = document.getElementById(
   "delivery-instructions"
 );
 
-// Clear a previous whitespace validation error when the customer types.
-[customerName, deliveryLocation].forEach(function (input) {
-  input.addEventListener("input", function () {
-    input.setCustomValidity("");
-  });
-});
+const validate = setUpValidation(checkoutForm, new Map([
+  [customerName, requiredText("your name", 80)],
+  [deliveryLocation, requiredText("your estate or neighbourhood", 160)],
+  [deliveryInstructions, textLength(300)]
+]));
 
 checkoutForm.addEventListener("submit", function (event) {
   // Prepare a WhatsApp message instead of submitting to a server.
   event.preventDefault();
   checkoutFeedback.textContent = "";
 
-  customerName.setCustomValidity(
-    customerName.value.trim() ? "" : "Please enter your name."
-  );
-
-  deliveryLocation.setCustomValidity(
-    deliveryLocation.value.trim()
-      ? ""
-      : "Please enter your estate or neighbourhood."
-  );
-
-  if (!checkoutForm.reportValidity()) {
-    return;
-  }
+  if (!validate()) return;
 
   // Block checkout if a visible cart quantity is invalid.
   const quantityInputs = document.querySelectorAll(
