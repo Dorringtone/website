@@ -1,59 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-KE">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a Mama Mboga Fresh account or shop and check out as a guest.">
   <title>Create an account | Mama Mboga Fresh</title>
-
-  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
+  <link rel="icon" type="image/webp" href="logo/brand.webp">
   <link rel="stylesheet" href="style.css">
   <script src="navigation.js" defer></script>
+  <script src="products-data.js" defer></script>
+  <script src="cart-store.js" defer></script>
+  <script src="cart-count.js" defer></script>
+  <script type="module" src="account-page.js"></script>
   <script type="module" src="auth-nav.js"></script>
-
-  <script type="module" src="register.js"></script>
 </head>
-
-<body id="page-top">
-  <a href="#main-content">Skip to main content</a>
-
-  <header>
-    <a href="index.html">
-      <img src="logo/logo.jpg" alt="Mama Mboga Fresh home" width="120">
-    </a>
-
-    <p>Mama Mboga Fresh</p>
-
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" hidden>
-      <span aria-hidden="true">☰</span> Menu
-    </button>
-    <nav id="main-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="cart.html">Cart</a>
-      <a href="index.html#delivery">Delivery</a>
-      <a href="contact.html">Contact</a>
-      <a href="log-in.html">Log in</a>
-    </nav>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <span>Mama Mboga <strong>Fresh</strong></span>
+      </a>
+      <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-menu" hidden>Menu</button>
+      <nav id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contact</a>
+        <a href="log-in.html">Log in</a>
+        <a class="desktop-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      </nav>
+    </div>
   </header>
+  <main id="main-content" tabindex="-1">
+    <section class="account-page panel" aria-labelledby="account-title">
+      <h1 id="account-title">Create an account</h1>
 
-  <main id="main-content">
-    <section class="information-page account-page">
-      <h1>Create an account</h1>
+      <p class="account-intro">You can <a href="products.html">shop and check out as a guest</a>.</p>
 
-      <p>
-        Registration is optional. You can
-        <a href="products.html">browse products and request an order</a>
-        without an account.
-      </p>
-
-      <p id="register-note">
-        All fields are required. Use an email address you can access
-        so that you can verify your account and reset your password.
-      </p>
-
-      <form id="register-form" class="site-form"
-            aria-describedby="register-note">
+      <form id="register-form" class="site-form" method="post" hidden>
         <p>
           <label for="register-name">Full name</label>
           <input
@@ -94,7 +81,7 @@
             aria-describedby="register-password-help register-password-error"
             required
           >
-          <span id="register-password-help">
+          <span id="register-password-help" class="account-hint">
             Use at least eight characters and choose a password
             you do not use elsewhere.
           </span>
@@ -124,9 +111,8 @@
         </button>
       </form>
 
-      <p id="register-status" role="status" aria-live="polite">
+      <p id="register-status" class="feedback" role="status">
         Connecting to the account service…
-        If this message remains, check your internet connection and refresh.
       </p>
 
       <p id="account-next" hidden>
@@ -134,39 +120,21 @@
         to check your email verification status or log out.
       </p>
 
-      <p>
-        Already registered? <a href="log-in.html">Log in</a>.
-      </p>
+      <p class="account-alternate" id="register-alternate">Already registered? <a href="log-in.html">Log in</a>.</p>
 
       <noscript>
         <p>Enable JavaScript to create an account.</p>
       </noscript>
 
-      <p>Need help? <a href="contact.html">Contact us</a>.</p>
+      <p class="account-help">Need help? <a href="contact.html">Contact us</a>.</p>
     </section>
   </main>
-
-  <footer>
-    <p>
-      Mama Mboga Fresh · Adams Arcade, Ngong Road, Nairobi ·
-      <a href="tel:+254755559107">0755 559 107</a>
-    </p>
-    <p>&copy; 2026 Mama Mboga Fresh.</p>
-    <a class="back-to-top" href="#page-top" aria-label="Back to top" title="Back to top">
-      <span aria-hidden="true">↑</span>
-    </a>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
+      <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
+      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
   </footer>
-
-  <a class="whatsapp-help" href="https://wa.me/254755559107"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="WhatsApp help (opens in a new tab)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-         stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M21 11.5a9 9 0 0 1-13.3 7.9L3 21l1.5-4.7A9 9 0 1 1 21 11.5Z"/>
-      <path d="M9 7.5 7.8 8.7c0 3.3 3.2 6.5 6.5 6.5l1.2-1.2-2-1.5-1 1c-1.3-.5-2.5-1.7-3-3l1-1-1.5-2Z"/>
-    </svg>
-    WhatsApp help
-  </a>
 </body>
 </html>

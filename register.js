@@ -17,6 +17,7 @@ const confirmInput = document.getElementById("register-confirm");
 const button = document.getElementById("register-button");
 const status = document.getElementById("register-status");
 const accountNext = document.getElementById("account-next");
+const alternate = document.getElementById("register-alternate");
 
 let busy = false;
 
@@ -32,6 +33,7 @@ onAuthStateChanged(
 
     form.hidden = Boolean(user);
     accountNext.hidden = !user;
+    alternate.hidden = Boolean(user);
     button.disabled = false;
 
     status.textContent = user
@@ -39,8 +41,9 @@ onAuthStateChanged(
       : "";
   },
   function () {
+    status.classList.add("status-error");
     status.textContent =
-      "The account service could not load. Please refresh and try again.";
+      "The account service could not load. Refresh the page and try again.";
   }
 );
 
@@ -93,6 +96,7 @@ form.addEventListener("submit", async function (event) {
   status.classList.remove("status-error");
   if (!validate()) return;
 
+  const fullName = nameInput.value.trim();
   busy = true;
   button.disabled = true;
   status.textContent = "Creating your account…";
@@ -106,11 +110,10 @@ form.addEventListener("submit", async function (event) {
 
     // The account now exists, even if a later step fails.
     const user = credential.user;
-    const fullName = nameInput.value.trim();
 
     form.reset();
     form.hidden = true;
-    accountNext.hidden = false;
+    alternate.hidden = true;
 
     let profileSaved = true;
     let verificationSent = true;
@@ -146,7 +149,10 @@ form.addEventListener("submit", async function (event) {
     );
 
     status.textContent = messages.join(" ");
+    accountNext.hidden = false;
+    accountNext.querySelector("a").focus();
   } catch (error) {
+    status.classList.add("status-error");
     status.textContent = registrationError(error);
   } finally {
     busy = false;

@@ -12,11 +12,13 @@ const CartStore = {
       return [];
     }
 
-    const items = JSON.parse(saved);
-
-    if (!Array.isArray(items)) {
-      throw new Error("Invalid saved cart.");
+    let items;
+    try {
+      items = JSON.parse(saved);
+    } catch {
+      return [];
     }
+    if (!Array.isArray(items)) return [];
 
     // Keep only recognised products with valid quantities.
     return items.filter(function (item) {
@@ -34,6 +36,7 @@ const CartStore = {
 
   save(items) {
     localStorage.setItem(this.key, JSON.stringify(items));
+    document.dispatchEvent(new Event("cartchange"));
   },
 
   add(id, quantity) {

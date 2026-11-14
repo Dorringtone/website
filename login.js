@@ -68,7 +68,7 @@ function showAccount(user) {
     ? `Welcome, ${user.displayName}.`
     : "You are logged in.";
 
-  accountEmail.textContent = `Email: ${user.email}`;
+  accountEmail.textContent = user.email ?? "";
 
   verificationStatus.textContent = user.emailVerified
     ? "Your email address is verified."
@@ -135,6 +135,7 @@ loginForm.addEventListener("submit", async function (event) {
     );
 
     passwordInput.value = "";
+    document.getElementById("account-title").focus();
     showMessage("You have logged in successfully.");
   } catch (error) {
     showMessage("Login failed: " + errorMessage(error), true);
@@ -193,8 +194,7 @@ verifyButton.addEventListener("click", async function () {
 
     showMessage(
       "Verification email sent. Check your inbox and spam folder. " +
-      "Open the verification link, then return here and select " +
-      "“I have verified my email — check again”."
+      "Open the verification link, then return here and select “Check email verification”."
     );
   } catch (error) {
     showMessage(errorMessage(error), true);
@@ -215,7 +215,7 @@ checkButton.addEventListener("click", async function () {
     await reload(auth.currentUser);
     showAccount(auth.currentUser);
 
-    if (auth.currentUser.emailVerified) {
+    if (auth.currentUser?.emailVerified) {
       showMessage("Your email verification is confirmed.");
     } else {
       showMessage(
@@ -244,6 +244,8 @@ document.getElementById("logout-button").addEventListener(
     try {
       await signOut(auth);
       loginForm.reset();
+      showAccount(null);
+      emailInput.focus();
       showMessage("You have logged out.");
     } catch (error) {
       showMessage(errorMessage(error), true);

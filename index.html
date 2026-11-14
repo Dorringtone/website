@@ -1,197 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-KE">
 <head>
-  <!-- Characters and mobile screen settings -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    content="Browse fresh produce from Mama Mboga Fresh at Adams Arcade, Nairobi. Order through WhatsApp for delivery within our service area."
-  >
-
-  <title>Mama Mboga Fresh | Home</title>
-  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
-  <!-- Connect this page to the CSS file -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse produce from Mama Mboga Fresh at Adams Arcade, Nairobi, and prepare your order on WhatsApp.">
+  <title>Mama Mboga Fresh | Produce from Adams Arcade</title>
+  <link rel="icon" type="image/webp" href="logo/brand.webp">
   <link rel="stylesheet" href="style.css">
   <script src="navigation.js" defer></script>
+  <script src="products-data.js" defer></script>
+  <script src="cart-store.js" defer></script>
+  <script src="cart-count.js" defer></script>
+  <script src="product-cards.js" defer></script>
+  <script src="home.js" defer></script>
   <script type="module" src="auth-nav.js"></script>
-  <script src="home-status.js" defer></script>
-  <script src="home-faq.js" defer></script>
 </head>
-
-<body id="page-top">
-  <!-- Helps keyboard users move directly to the main content -->
-  <a href="#main-content">Skip to main content</a>
-
-  <!-- Business identity and navigation -->
-  <header>
-    <a href="index.html">
-      <img src="logo/logo.jpg" alt="Mama Mboga Fresh home" width="120">
-    </a>
-
-    <p>Mama Mboga Fresh</p>
-
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" hidden>
-      <span aria-hidden="true">☰</span> Menu
-    </button>
-    <nav id="main-menu" aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="products.html">Products</a>
-      <a href="cart.html">Cart</a>
-      <a href="#delivery">Delivery</a>
-      <a href="contact.html">Contact</a>
-      <a href="log-in.html">Log in</a>
-    </nav>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <span>Mama Mboga <strong>Fresh</strong></span>
+      </a>
+      <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-menu" hidden>Menu</button>
+      <nav id="main-menu" aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="products.html">Products</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contact</a>
+        <a href="log-in.html">Log in</a>
+        <a class="desktop-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      </nav>
+    </div>
   </header>
-
-  <main id="main-content">
-    <!-- Introduction -->
-    <section class="home-hero">
-      <h1>Fresh produce for your everyday meals</h1>
-      <p>
-        Welcome to Mama Mboga Fresh, your neighbourhood produce stall
-        at Adams Arcade, Ngong Road, Nairobi.
-      </p>
-      <p>
-        Browse our vegetables and fruit, add what you need to your cart,
-        then send your order request through WhatsApp.
-      </p>
-      <a href="#featured-products">Explore featured products</a>
-    </section>
-
-    <aside class="stall-status-banner" aria-labelledby="stall-status-title">
-      <h2 id="stall-status-title">Stall opening status</h2>
-      <p id="stall-status">Monday–Saturday, 8:00 a.m.–8:00 p.m. Kenya time. Closed on Sundays.</p>
-      <p><a href="#opening-hours">View opening hours</a> · Status follows our weekly schedule.</p>
-    </aside>
-
-    <!-- Featured products on the Home page -->
-    <section id="featured-products">
-      <h2>Featured products</h2>
-      <p>
-        Indicative prices below are subject to confirmation.
-        Price list updated 31 October 2026.
-      </p>
-
-      <!-- Group the three products for the CSS grid layout -->
-      <div class="product-grid">
-        <article>
-          <img src="images/tomato.jpg" alt="Fresh tomatoes" width="240">
-          <h3>Tomatoes</h3>
-          <p>KES 100 per kilogram</p>
-        </article>
-
-        <article>
-          <img src="images/sukuma.webp" alt="Fresh sukuma wiki" width="240">
-          <h3>Sukuma wiki</h3>
-          <p>KES 40 per bunch</p>
-        </article>
-
-        <article>
-          <img src="images/oranges.jpg" alt="Fresh local oranges" width="240">
-          <h3>Local oranges</h3>
-          <p>KES 130 per kilogram</p>
-        </article>
+  <main id="main-content" tabindex="-1">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="location-dot" aria-hidden="true"></span> Adams Arcade, Nairobi</p>
+        <h1 id="home-title">Fresh produce<br>for everyday<br class="desktop-break"> <em>meals.</em></h1>
+        <p>Shop vegetables, fruit and herbs from your neighbourhood stall. Build your basket and order on WhatsApp.</p>
+        <a class="button-link button-warm" href="products.html">Shop produce <span aria-hidden="true">↗</span></a>
       </div>
-
-      <p class="featured-catalogue-link"><a class="button-link" href="products.html">View all products</a></p>
+      <div class="hero-visual"><img src="images/market-basket.webp" alt="A market basket of tomatoes, leafy greens, carrots and onions" width="900" height="700" fetchpriority="high"></div>
     </section>
 
-    <div class="home-info-grid">
-      <!-- Delivery information -->
-      <section id="delivery">
-        <h2>Delivery around Adams Arcade</h2>
-        <p>
-          We serve addresses within a 10 km radius of our stall,
-          subject to address and road-access confirmation.
-        </p>
-        <p>
-          We confirm availability, delivery charges and delivery time
-          on WhatsApp before accepting your order.
-        </p>
-      </section>
-
-      <!-- Business contact details -->
-      <section id="contact">
-        <h2>Visit or contact us</h2>
-        <p>Adams Arcade, Ngong Road, Nairobi.</p>
-
-        <table id="opening-hours" class="opening-hours">
-          <caption>Mama Mboga Fresh opening hours</caption>
-          <thead>
-            <tr>
-              <th scope="col">Day</th>
-              <th scope="col">Hours (EAT)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Monday–Saturday</th>
-              <td>8:00 a.m.–8:00 p.m.</td>
-            </tr>
-            <tr>
-              <th scope="row">Sunday</th>
-              <td>Closed</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>Phone: <a href="tel:+254755559107">0755 559 107</a></p>
-        <p><a href="https://wa.me/254755559107">Contact us on WhatsApp</a></p>
-      </section>
+    <div id="delivery" class="service-strip" aria-label="Shopping information">
+      <a href="delivery.html"><span class="service-icon" aria-hidden="true">↗</span><span><strong>Neighbourhood delivery</strong><small>Within 10 km of Adams Arcade</small></span></a>
+      <a id="contact" href="contact.html#opening-hours"><span class="service-icon" aria-hidden="true">◷</span><span><strong id="opening-hours">Stall hours</strong><small>Mon–Sat, 8 a.m.–8 p.m. EAT</small></span></a>
+      <a href="products.html"><span class="service-icon" aria-hidden="true">✓</span><span><strong>Order as a guest</strong><small>Checkout on WhatsApp</small></span></a>
     </div>
 
-    <section class="home-faq" id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Frequently asked questions</h2>
-      <div class="faq-item">
-        <h3 class="faq-heading">How do I place an order?</h3>
-        <div class="faq-answer" id="faq-answer-1">
-          <p>Browse the <a href="products.html">products</a>, add what you need to your cart, then enter your delivery details. Open WhatsApp from the cart, review the prepared message and press Send. We’ll confirm your order on WhatsApp.</p>
-        </div>
+    <section class="featured" id="featured-products" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <div><h2 id="featured-title">Stall favourites</h2><p>Prices are indicative.</p></div>
+        <a class="text-link" href="products.html">View all 21 products <span aria-hidden="true">→</span></a>
       </div>
-      <div class="faq-item">
-        <h3 class="faq-heading">Do I need an account to order?</h3>
-        <div class="faq-answer" id="faq-answer-2">
-          <p>No. You can browse, use the cart and send an order request on WhatsApp without registering or logging in.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-heading">Do you deliver to my neighbourhood?</h3>
-        <div class="faq-answer" id="faq-answer-3">
-          <p>We serve addresses within 10 km of our Adams Arcade stall in Nairobi, subject to address and road access confirmation. Enter your estate or neighbourhood in the <a href="cart.html">cart</a> and add a landmark if it helps us find you.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <h3 class="faq-heading">Does the cart subtotal include delivery?</h3>
-        <div class="faq-answer" id="faq-answer-4">
-          <p>No. We confirm product availability, the delivery fee, timing, the final total and payment arrangements on WhatsApp.</p>
-        </div>
-      </div>
+      <div id="featured-list" class="product-grid"></div>
+      <noscript><p><a href="https://wa.me/254755559107">Ask us on WhatsApp about available produce</a>.</p></noscript>
+    </section>
+
+    <section class="home-faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Shopping questions</h2>
+      <details><summary>How do I place an order?</summary><p>Choose your produce, add your delivery details in the cart and open WhatsApp. Review the prepared message and press Send so we can confirm your order.</p></details>
+      <details><summary>Does the subtotal include delivery?</summary><p>The subtotal covers your produce. We confirm availability, delivery fees, timing and the final total over WhatsApp.</p></details>
+      <details><summary>Do you deliver to my neighbourhood?</summary><p>We serve addresses within 10 km of Adams Arcade, subject to address and road access. <a href="delivery.html">See delivery details</a>.</p></details>
     </section>
   </main>
-
-  <footer>
-    <p>
-      Mama Mboga Fresh · Adams Arcade, Ngong Road, Nairobi ·
-      <a href="tel:+254755559107">0755 559 107</a>
-    </p>
-    <p>&copy; 2026 Mama Mboga Fresh.</p>
-    <a class="back-to-top" href="#page-top" aria-label="Back to top" title="Back to top">
-      <span aria-hidden="true">↑</span>
-    </a>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
+      <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
+      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
   </footer>
-
-  <a class="whatsapp-help" href="https://wa.me/254755559107"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="WhatsApp help (opens in a new tab)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-         stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M21 11.5a9 9 0 0 1-13.3 7.9L3 21l1.5-4.7A9 9 0 1 1 21 11.5Z"/>
-      <path d="M9 7.5 7.8 8.7c0 3.3 3.2 6.5 6.5 6.5l1.2-1.2-2-1.5-1 1c-1.3-.5-2.5-1.7-3-3l1-1-1.5-2Z"/>
-    </svg>
-    WhatsApp help
-  </a>
 </body>
 </html>

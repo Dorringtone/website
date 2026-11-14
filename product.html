@@ -1,151 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-KE">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View produce details, choose a quantity and add it to your cart.">
   <title>Product details | Mama Mboga Fresh</title>
-  <link rel="icon" type="image/jpeg" href="logo/logo.jpg">
+  <link rel="icon" type="image/webp" href="logo/brand.webp">
   <link rel="stylesheet" href="style.css">
   <script src="navigation.js" defer></script>
-  <script type="module" src="auth-nav.js"></script>
-
   <script src="products-data.js" defer></script>
   <script src="cart-store.js" defer></script>
+  <script src="cart-count.js" defer></script>
+  <script src="quantity.js" defer></script>
+  <script src="product-cards.js" defer></script>
   <script src="product.js" defer></script>
+  <script type="module" src="auth-nav.js"></script>
 </head>
-
-<body id="page-top">
-  <a href="#main-content">Skip to main content</a>
-
-  <header>
-    <a href="index.html">
-      <img
-        src="logo/logo.jpg"
-        alt="Mama Mboga Fresh home"
-        width="120"
-      >
-    </a>
-
-    <p>Mama Mboga Fresh</p>
-
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu" hidden>
-      <span aria-hidden="true">☰</span> Menu
-    </button>
-    <nav id="main-menu" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="cart.html">Cart</a>
-      <a href="index.html#delivery">Delivery</a>
-      <a href="contact.html">Contact</a>
-      <a href="log-in.html">Log in</a>
-    </nav>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <span>Mama Mboga <strong>Fresh</strong></span>
+      </a>
+      <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-menu" hidden>Menu</button>
+      <nav id="main-menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products.html" aria-current="location">Products</a>
+        <a href="delivery.html">Delivery</a>
+        <a href="contact.html">Contact</a>
+        <a href="log-in.html">Log in</a>
+        <a class="desktop-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
+      </nav>
+    </div>
   </header>
-
-  <main id="main-content">
+  <main id="main-content" tabindex="-1">
     <section class="product-details">
-      <p>
-        <a href="products.html">Back to all products</a>
-      </p>
-
-      <!-- Hidden until JavaScript finds a matching product -->
+      <p class="back-row"><a id="back-to-catalogue" class="text-link" href="products.html">← All products</a></p>
       <div id="product-content" hidden>
         <div class="product-detail-grid">
-          <img id="detail-image" alt="" width="480">
-
-          <div>
+          <div class="detail-photo"><img id="detail-image" alt="" width="540" height="450"></div>
+          <div class="detail-copy">
+            <p id="detail-category" class="eyebrow"></p>
             <h1 id="detail-name"></h1>
-
             <p id="detail-description"></p>
             <p id="detail-price" class="detail-price"></p>
-
-            <label for="quantity">Quantity of selling units</label>
-
-            <p id="quantity-help"></p>
-
-            <input
-              id="quantity"
-              type="number"
-              min="1"
-              max="99"
-              step="1"
-              value="1"
-              required
-              aria-describedby="quantity-help quantity-error"
-            >
-
-            <p id="quantity-error" role="status"></p>
-
-            <p id="item-total" class="detail-price" role="status"></p>
-
-            <p>
-              Prices and availability are subject to confirmation.
-              Delivery is charged separately.
-            </p>
-
-            <button id="add-to-cart" class="action-button" type="button">
-              Add to cart
-            </button>
-
-            <p id="cart-message" role="status"></p>
-
-            <p>
-              <a href="products.html">Continue shopping</a>
-              |
-              <a href="cart.html">View cart</a>
-            </p>
-
-            <p>
-              Adding an item to your cart does not confirm an order.
-            </p>
+            <form id="product-form">
+              <label for="quantity">Quantity</label>
+              <p id="quantity-help" class="muted"></p>
+              <div id="product-quantity-control" class="quantity-control">
+                <button type="button" data-step="-1" aria-label="Decrease quantity">−</button>
+                <input id="quantity" type="number" inputmode="numeric" min="1" max="99" step="1" value="1" required aria-describedby="quantity-help quantity-error">
+                <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+              </div>
+              <p id="quantity-error" class="validation-error" role="status"></p>
+              <p id="item-total" class="item-total" aria-live="polite"></p>
+              <div class="detail-actions">
+                <button id="add-to-cart" class="action-button" type="submit">Add to cart</button>
+                <a class="button-link button-outline" href="cart.html">View cart</a>
+              </div>
+              <p id="cart-message" class="feedback" role="status"></p>
+            </form>
+            <p class="muted">We confirm prices and availability on WhatsApp. Delivery is charged separately.</p>
           </div>
         </div>
       </div>
-
-      <!-- JavaScript adds suggested product cards here -->
-      <aside
-        id="related-products"
-        class="related-products"
-        aria-labelledby="related-products-heading"
-        hidden
-      >
-        <h2 id="related-products-heading">You may also like</h2>
+      <aside id="related-products" class="related-products" aria-labelledby="related-products-heading" hidden>
+        <h2 id="related-products-heading">Pairs well with</h2>
         <div id="related-list" class="product-grid"></div>
       </aside>
-
-      <p id="product-error" role="alert" hidden>
-        We could not find that product. Please return to the
-        <a href="products.html">Products page</a>
-        and select an item.
-      </p>
-
-      <noscript>
-        <p>Please enable JavaScript to view product details.</p>
-      </noscript>
+      <div id="product-error" class="page-heading" hidden>
+        <h1>Product unavailable</h1>
+        <p>Choose an item from the <a href="products.html">product catalogue</a>.</p>
+      </div>
+      <noscript><h1>Product details</h1><p>Enable JavaScript to view product details.</p></noscript>
     </section>
   </main>
-
-  <footer>
-    <p>
-      Mama Mboga Fresh · Adams Arcade, Ngong Road, Nairobi ·
-      <a href="tel:+254755559107">0755 559 107</a>
-    </p>
-    <p>&copy; 2026 Mama Mboga Fresh.</p>
-    <a class="back-to-top" href="#page-top" aria-label="Back to top" title="Back to top">
-      <span aria-hidden="true">↑</span>
-    </a>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
+      <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
+      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
   </footer>
-
-  <a class="whatsapp-help" href="https://wa.me/254755559107"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="WhatsApp help (opens in a new tab)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-         stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M21 11.5a9 9 0 0 1-13.3 7.9L3 21l1.5-4.7A9 9 0 1 1 21 11.5Z"/>
-      <path d="M9 7.5 7.8 8.7c0 3.3 3.2 6.5 6.5 6.5l1.2-1.2-2-1.5-1 1c-1.3-.5-2.5-1.7-3-3l1-1-1.5-2Z"/>
-    </svg>
-    WhatsApp help
-  </a>
 </body>
 </html>

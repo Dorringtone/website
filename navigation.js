@@ -1,48 +1,27 @@
-// Session 10: the same navigation disclosure is used on every page.
-(() => {
-  const button = document.querySelector(".menu-btn");
-  const menu = document.querySelector("#main-menu");
-  if (!button || !menu) return;
+const menuButton = document.querySelector(".menu-btn");
+const siteMenu = document.querySelector("#main-menu");
+const wideNavigation = window.matchMedia("(min-width: 900px)");
 
-  // Keep this breakpoint in step with the header styles in style.css.
-  const desktop = window.matchMedia("(min-width: 768px)");
+function closeMenu() {
+  siteMenu.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+}
 
-  function closeMenu() {
-    menu.classList.remove("open");
-    button.setAttribute("aria-expanded", "false");
+menuButton.addEventListener("click", () => {
+  menuButton.setAttribute("aria-expanded", String(siteMenu.classList.toggle("open")));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && siteMenu.classList.contains("open")) {
+    closeMenu();
+    menuButton.focus();
   }
+});
 
-  button.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("open");
-    button.setAttribute("aria-expanded", String(isOpen));
-  });
+wideNavigation.addEventListener("change", () => {
+  if (!wideNavigation.matches && siteMenu.contains(document.activeElement)) menuButton.focus();
+  closeMenu();
+});
 
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (desktop.matches) return;
-      // Also handle a link that leads back to the current page.
-      if (menu.contains(document.activeElement)) button.focus();
-      closeMenu();
-    });
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape" || event.defaultPrevented || desktop.matches ||
-        !menu.classList.contains("open")) return;
-
-    if (button === document.activeElement || menu.contains(document.activeElement)) {
-      button.focus();
-      event.preventDefault();
-    }
-    closeMenu();
-  });
-
-  desktop.addEventListener("change", () => {
-    if (!desktop.matches && menu.contains(document.activeElement)) button.focus();
-    closeMenu();
-  });
-
-  // Without this script, the button stays hidden and the links stay visible.
-  button.hidden = false;
-  button.closest("header").classList.add("has-menu-toggle");
-})();
+menuButton.hidden = false;
+document.querySelector(".site-header").classList.add("has-menu-toggle");
