@@ -1,3 +1,4 @@
+// Render the requested product, quantity selector and related suggestions.
 const parameters = new URLSearchParams(window.location.search);
 const requestedId = parameters.get("id");
 const selectedProduct = products.find((product) => CartStore.productId(product) === requestedId);
@@ -23,6 +24,7 @@ if (!selectedProduct) {
   document.getElementById("detail-price").textContent = `KES ${selectedProduct.price} / ${selectedProduct.unit}`;
   document.getElementById("quantity-help").textContent = `Each unit is ${selectedProduct.unit}.`;
 
+  // Show an estimate only after the selected quantity passes the input constraints.
   function updateItemTotal() {
     cartMessage.textContent = "";
     if (!quantity.validity.valid) {

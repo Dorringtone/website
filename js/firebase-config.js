@@ -1,3 +1,4 @@
+// Initialise the original Firebase project with its browser SDK and web app configuration.
 import { initializeApp } from
   "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 

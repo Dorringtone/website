@@ -1,8 +1,9 @@
+// Maintain product details here. Image paths are relative to the HTML files in pages/. Keep filenames stable because the cart uses them as product IDs.
 // Each product has a name, image, price and selling unit.
 const products = [
   {
     name: "Tomatoes",
-    image: "images/tomato.jpg",
+    image: "../images/tomato.jpg",
     price: 100,
     unit: "1 kg",
     category: "Vegetables",
@@ -10,7 +11,7 @@ const products = [
   },
   {
     name: "Red onions",
-    image: "images/onion.jpg",
+    image: "../images/onion.jpg",
     price: 150,
     unit: "1 kg",
     category: "Vegetables",
@@ -18,7 +19,7 @@ const products = [
   },
   {
     name: "Carrots",
-    image: "images/carrots.jpg",
+    image: "../images/carrots.jpg",
     price: 80,
     unit: "1 kg",
     category: "Vegetables",
@@ -26,7 +27,7 @@ const products = [
   },
   {
     name: "White potatoes",
-    image: "images/potato.jpg",
+    image: "../images/potato.jpg",
     price: 120,
     unit: "1 kg",
     category: "Vegetables",
@@ -34,7 +35,7 @@ const products = [
   },
   {
     name: "White cabbage",
-    image: "images/cabbage.jpg",
+    image: "../images/cabbage.jpg",
     price: 100,
     unit: "1 head",
     category: "Leafy greens",
@@ -42,7 +43,7 @@ const products = [
   },
   {
     name: "Bananas",
-    image: "images/banana.jpg",
+    image: "../images/banana.jpg",
     price: 90,
     unit: "1 kg",
     category: "Fruit",
@@ -50,7 +51,7 @@ const products = [
   },
   {
     name: "Local cucumber",
-    image: "images/cucumber.jpg",
+    image: "../images/cucumber.jpg",
     price: 70,
     unit: "500 g",
     category: "Vegetables",
@@ -58,7 +59,7 @@ const products = [
   },
   {
     name: "Eggplant",
-    image: "images/eggplant.jpg",
+    image: "../images/eggplant.jpg",
     price: 50,
     unit: "500 g",
     category: "Vegetables",
@@ -66,7 +67,7 @@ const products = [
   },
   {
     name: "Dhania",
-    image: "images/dania.webp",
+    image: "../images/dania.webp",
     price: 25,
     unit: "1 bunch",
     category: "Herbs",
@@ -74,7 +75,7 @@ const products = [
   },
   {
     name: "Spinach",
-    image: "images/spinach.jpg",
+    image: "../images/spinach.jpg",
     price: 40,
     unit: "1 bunch",
     category: "Leafy greens",
@@ -82,7 +83,7 @@ const products = [
   },
   {
     name: "Sukuma wiki",
-    image: "images/sukuma.webp",
+    image: "../images/sukuma.webp",
     price: 40,
     unit: "1 bunch",
     category: "Leafy greens",
@@ -90,7 +91,7 @@ const products = [
   },
   {
     name: "White maize",
-    image: "images/corn.jpg",
+    image: "../images/corn.jpg",
     price: 40,
     unit: "1 cob",
     category: "Vegetables",
@@ -98,7 +99,7 @@ const products = [
   },
   {
     name: "Green hoho",
-    image: "images/hoho.jpg",
+    image: "../images/hoho.jpg",
     price: 70,
     unit: "500 g",
     category: "Vegetables",
@@ -106,7 +107,7 @@ const products = [
   },
   {
     name: "Ngowe mangoes",
-    image: "images/mango.jpg",
+    image: "../images/mango.jpg",
     price: 140,
     unit: "1 kg",
     category: "Fruit",
@@ -114,7 +115,7 @@ const products = [
   },
   {
     name: "Broccoli",
-    image: "images/broccoli.jpg",
+    image: "../images/broccoli.jpg",
     price: 100,
     unit: "1 piece",
     category: "Vegetables",
@@ -122,7 +123,7 @@ const products = [
   },
   {
     name: "Peeled peas",
-    image: "images/peas.jpg",
+    image: "../images/peas.jpg",
     price: 260,
     unit: "500 g",
     category: "Vegetables",
@@ -130,7 +131,7 @@ const products = [
   },
   {
     name: "Ginger",
-    image: "images/ginger.jpg",
+    image: "../images/ginger.jpg",
     price: 150,
     unit: "500 g",
     category: "Herbs & spices",
@@ -138,7 +139,7 @@ const products = [
   },
   {
     name: "Garlic",
-    image: "images/garlic.jpg",
+    image: "../images/garlic.jpg",
     price: 150,
     unit: "250 g",
     category: "Herbs & spices",
@@ -146,7 +147,7 @@ const products = [
   },
   {
     name: "Local oranges",
-    image: "images/oranges.jpg",
+    image: "../images/oranges.jpg",
     price: 130,
     unit: "1 kg",
     category: "Fruit",
@@ -154,7 +155,7 @@ const products = [
   },
   {
     name: "Green-skinned pumpkin",
-    image: "images/pumpkin.jpg",
+    image: "../images/pumpkin.jpg",
     price: 80,
     unit: "1 kg portion",
     category: "Vegetables",
@@ -162,7 +163,7 @@ const products = [
   },
   {
     name: "Fresh chilli",
-    image: "images/pepper.jpg",
+    image: "../images/pepper.jpg",
     price: 30,
     unit: "100 g",
     category: "Herbs & spices",

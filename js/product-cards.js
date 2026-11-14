@@ -1,3 +1,5 @@
+// Build a consistent card for featured, catalogue and related products.
+// Products use page-relative URLs because the catalogue and details both live in pages/.
 function productLink(product) {
   return `product.html?id=${encodeURIComponent(CartStore.productId(product))}`;
 }

@@ -1,3 +1,4 @@
+// Share inline field errors and focus the first invalid field on submission.
 // Check only active fields, and tell the visitor where to make corrections.
 export function requiredText(label, limit) {
   return field => {

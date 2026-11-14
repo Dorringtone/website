@@ -1,3 +1,4 @@
+// Store product IDs and quantities in the browser. Prices always come from the current catalogue.
 const CartStore = {
   key: "mama-mboga-cart",
 

@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="View produce details, choose a quantity and add it to your cart.">
   <title>Product details | Mama Mboga Fresh</title>
-  <link rel="icon" type="image/webp" href="logo/brand.webp">
-  <link rel="stylesheet" href="style.css">
-  <script src="navigation.js" defer></script>
-  <script src="products-data.js" defer></script>
-  <script src="cart-store.js" defer></script>
-  <script src="cart-count.js" defer></script>
-  <script src="quantity.js" defer></script>
-  <script src="product-cards.js" defer></script>
-  <script src="product.js" defer></script>
-  <script type="module" src="auth-nav.js"></script>
+  <!-- Shared assets live one level above pages/. -->
+  <link rel="icon" type="image/webp" href="../logo/brand.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Load shared navigation and cart scripts before page-specific scripts. -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/products-data.js" defer></script>
+  <script src="../js/cart-store.js" defer></script>
+  <script src="../js/cart-count.js" defer></script>
+  <script src="../js/quantity.js" defer></script>
+  <script src="../js/product-cards.js" defer></script>
+  <script src="../js/product.js" defer></script>
+  <script type="module" src="../js/auth-nav.js"></script>
 </head>
 <body>
+  <!-- Keyboard users can skip over the site menu. -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Keep navigation and cart access visible while scrolling. -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <img src="../logo/brand.webp" alt="" width="48" height="48">
         <span>Mama Mboga <strong>Fresh</strong></span>
       </a>
       <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
@@ -39,6 +43,7 @@
   <main id="main-content" tabindex="-1">
     <section class="product-details">
       <p class="back-row"><a id="back-to-catalogue" class="text-link" href="products.html">← All products</a></p>
+      <!-- product.js reads the product ID from the URL and reveals the matching item. -->
       <div id="product-content" hidden>
         <div class="product-detail-grid">
           <div class="detail-photo"><img id="detail-image" alt="" width="540" height="450"></div>
@@ -47,6 +52,7 @@
             <h1 id="detail-name"></h1>
             <p id="detail-description"></p>
             <p id="detail-price" class="detail-price"></p>
+            <!-- Quantity represents the selling unit shown above the controls. -->
             <form id="product-form">
               <label for="quantity">Quantity</label>
               <p id="quantity-help" class="muted"></p>
@@ -67,6 +73,7 @@
           </div>
         </div>
       </div>
+      <!-- The product script adds related items from the same catalogue. -->
       <aside id="related-products" class="related-products" aria-labelledby="related-products-heading" hidden>
         <h2 id="related-products-heading">Pairs well with</h2>
         <div id="related-list" class="product-grid"></div>
@@ -78,12 +85,14 @@
       <noscript><h1>Product details</h1><p>Enable JavaScript to view product details.</p></noscript>
     </section>
   </main>
+  <!-- Shared address, opening hours and phone number. -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
       <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
-      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
   </footer>
+  <!-- General enquiries open in WhatsApp. Itemised orders start from the cart. -->
+  <a class="floating-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
 </body>
 </html>

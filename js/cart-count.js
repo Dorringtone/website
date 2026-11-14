@@ -1,3 +1,4 @@
+// Update the desktop and mobile badges after this tab or another tab changes the cart.
 function refreshCartCount() {
   let count = 0;
   try {

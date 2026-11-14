@@ -1,3 +1,4 @@
+// Share the same quantity stepper and integer range on product and cart pages.
 function setUpQuantity(control, input, onChange) {
   const decrement = control.querySelector('[data-step="-1"]');
   const increment = control.querySelector('[data-step="1"]');
@@ -9,6 +10,7 @@ function setUpQuantity(control, input, onChange) {
     increment.disabled = input.valueAsNumber >= maximum;
   }
 
+  // The buttons reuse the input event so manual edits and button clicks run the same validation.
   function changeBy(offset) {
     const number = input.validity.valid ? input.valueAsNumber : (offset > 0 ? minimum - 1 : minimum + 1);
     input.value = Math.min(maximum, Math.max(minimum, number + offset));

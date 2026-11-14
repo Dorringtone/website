@@ -1,3 +1,4 @@
+// Create a Firebase account, save its display name and request an email verification link.
 import { emailError, requiredText, setUpValidation, textLength } from "./form-validation.js";
 import { auth } from "./firebase-config.js";
 

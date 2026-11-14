@@ -1,31 +1,37 @@
 # Mama Mboga Fresh
 
-This folder contains the static storefront deployed for the private Mama Mboga Fresh site. The original project diagrams are in `documentations/`.
-
 ## Run it locally on Windows
 
-1. Extract the ZIP into a separate location so you can preview this version alongside your existing project.
-2. Open the extracted `website` folder in VS Code.
-3. If you use Live Server, right-click `index.html` and select **Open with Live Server**. Or open a terminal in the `website` folder and run:
+1. Extract the ZIP and open its `website` folder in VS Code.
+2. Right-click the root `index.html` and select **Open with Live Server**. You can also start a Python server from the `website` folder:
 
    ```powershell
    py -m http.server 8000
    ```
 
-   Then open <http://localhost:8000/> in your browser. This command requires Python. Press **Ctrl+C** in the terminal to stop the server.
+3. Open <http://localhost:8000/>. Press **Ctrl+C** in the terminal to stop the Python server.
 
-Use the local server for the cart and Contact forms because they load JavaScript modules.
+The local server loads the JavaScript modules used by checkout, contact and customer accounts.
 
-## Edit the site
+## Project folders
 
-- `products-data.js` contains the 21 products, selling units, indicative prices and descriptions.
-- `style.css` controls the responsive layout and styling. Fonts are bundled in `fonts/`.
-- `images/market-basket.webp` is the home-page hero image and `logo/brand.webp` is the optimised brand image.
+| Path | What to edit there |
+| --- | --- |
+| `pages/` | The eight storefront pages, including the home page at `pages/index.html`. |
+| `js/` | Browser scripts for the catalogue, cart, WhatsApp checkout and customer accounts. |
+| `css/style.css` | Shared styles, including the sticky header and floating WhatsApp link. |
+| `images/`, `logo/`, `fonts/` | Product and hero images, the brand assets and bundled fonts. |
+| `documentations/` | Original project diagrams. |
+| `index.html` | Entry point for the site root. It opens `pages/index.html`. |
 
-The cart is stored in the current browser. Checkout opens an itemised WhatsApp draft for the stall to confirm availability, delivery and the final total. The customer can shop as a guest. WhatsApp and Google Maps require internet access.
+The source comments explain which scripts populate each page, how the forms work and where the main style rules are defined. Edit `js/products-data.js` to update products, units and indicative prices.
 
-## Customer accounts
+## Update your existing GitHub repository
 
-The site's `log-in.html` and `register.html` pages use the original Mama Mboga Fresh Firebase Authentication project. Customer accounts support email and password login, registration, password reset, email verification and sign-out. These features require internet access. The checkout remains available to guests.
+Copy the **contents** of the extracted `website` folder into the root of your existing repository and keep its Git history. If you copy the new folders over an existing checkout, use VS Code to remove the old root-level page HTML files, JavaScript files and `style.css` that have moved. Keep the supplied root `index.html` so GitHub Pages can open the site from `/website/`.
 
-When moving these files into your existing GitHub checkout, copy the **contents** of the extracted `website` folder into the repository root. Keep your repository's Git history. The account pages and their JavaScript files belong alongside `index.html`.
+Direct links to the moved pages now use `/website/pages/`, such as `/website/pages/delivery.html`. Review the file moves in Source Control before committing.
+
+## Customer accounts and ordering
+
+The account pages use the original Mama Mboga Fresh Firebase project for login, registration, password reset, email verification and sign-out. Guests can still browse and order. The cart is stored in the browser and prepares an itemised WhatsApp draft. The floating **Chat on WhatsApp** link opens a general enquiry. WhatsApp, Google Maps and Firebase require internet access.

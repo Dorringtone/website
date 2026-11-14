@@ -1,3 +1,4 @@
+// Keep the shared account link in sync with the Firebase session.
 const accountLink = document.querySelector('#main-menu a[href="log-in.html"]');
 
 // Keep the account link and guest shopping available when Firebase cannot load.

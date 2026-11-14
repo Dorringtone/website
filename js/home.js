@@ -1,3 +1,4 @@
+// Render the three featured products using the shared catalogue and card renderer.
 const featuredList = document.getElementById("featured-list");
 const featuredIds = ["tomato", "sukuma", "oranges"];
 

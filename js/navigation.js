@@ -1,3 +1,4 @@
+// Toggle the mobile menu and keep keyboard focus on visible controls.
 const menuButton = document.querySelector(".menu-btn");
 const siteMenu = document.querySelector("#main-menu");
 const wideNavigation = window.matchMedia("(min-width: 900px)");
@@ -18,6 +19,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Closing the menu at the breakpoint avoids a stale expanded state when resizing.
 wideNavigation.addEventListener("change", () => {
   if (!wideNavigation.matches && siteMenu.contains(document.activeElement)) menuButton.focus();
   closeMenu();

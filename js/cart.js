@@ -1,8 +1,10 @@
+// Render the shopping cart from CartStore and keep quantity, line totals and subtotal in sync.
 const cartItems = document.getElementById("cart-items");
 const cartSubtotal = document.getElementById("cart-subtotal");
 const cartFeedback = document.getElementById("cart-feedback");
 const shoppingLink = document.getElementById("continue-shopping");
 
+// Recalculate from saved quantities so the subtotal also reflects changes from other tabs.
 function showSubtotal() {
   const subtotal = CartStore.read().reduce((total, item) => {
     const product = products.find((entry) => CartStore.productId(entry) === item.id);
@@ -86,6 +88,7 @@ function displayCart() {
     }
     updateLineTotal(item.quantity);
 
+    // Save valid quantities as they change, before the customer can submit the order.
     setUpQuantity(control, quantity, () => {
       if (!quantity.validity.valid) {
         quantity.setAttribute("aria-invalid", "true");
@@ -109,6 +112,7 @@ function displayCart() {
     remove.className = "remove-button";
     remove.textContent = "Remove";
     remove.setAttribute("aria-label", `Remove ${product.name} from cart`);
+    // After deleting a row, move keyboard focus to the next row or the shopping link.
     remove.addEventListener("click", () => {
       try {
         const position = Array.from(cartItems.children).indexOf(card);

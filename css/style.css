@@ -1,6 +1,7 @@
+/* Self-hosted fonts and storefront design tokens. */
 @font-face {
   font-family: "DM Serif Text";
-  src: url("fonts/dm-serif-text.woff2") format("woff2");
+  src: url("../fonts/dm-serif-text.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +9,7 @@
 
 @font-face {
   font-family: "DM Serif Text";
-  src: url("fonts/dm-serif-text-italic.woff2") format("woff2");
+  src: url("../fonts/dm-serif-text-italic.woff2") format("woff2");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -16,7 +17,7 @@
 
 @font-face {
   font-family: Inter;
-  src: url("fonts/inter.woff2") format("woff2");
+  src: url("../fonts/inter.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -34,6 +35,8 @@
   --yellow: #f8d46a;
   --rust: #a02c23;
   --radius: 20px;
+  --header-clearance: 6.25rem;
+  --chat-clearance: calc(4.5rem + env(safe-area-inset-bottom, 0px));
   --display: "DM Serif Text", Georgia, serif;
   font-family: Inter, system-ui, sans-serif;
   color: var(--ink);
@@ -42,6 +45,8 @@
   line-height: 1.55;
 }
 
+/* Shared layout and focus. Scroll clearance keeps anchor targets away from fixed controls. */
+html { scroll-padding-block: var(--header-clearance) var(--chat-clearance); }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
@@ -65,9 +70,16 @@ p:last-child { margin-bottom: 0; }
 .muted { color: var(--muted); }
 .eyebrow { margin-bottom: 12px; font-size: .73rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 .sr-only, .skip-link:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.skip-link:focus { position: absolute; z-index: 2; left: 16px; top: 12px; padding: 12px; color: white; background: var(--forest); }
+.skip-link:focus { position: fixed; z-index: 30; left: 16px; top: 12px; padding: 12px; color: white; background: var(--forest); }
 
-.site-header { background: var(--paper); border-bottom: 1px solid var(--line); }
+/* The header stays in the document flow and sticks to the top of the viewport. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
 .header-inner { display: flex; align-items: center; gap: 24px; justify-content: space-between; width: min(1200px, calc(100% - 64px)); min-height: 78px; margin: auto; }
 .brand { display: flex; align-items: center; gap: 9px; flex: none; min-height: 44px; text-decoration: none; }
 .brand img { width: 42px; height: 42px; object-fit: cover; border-radius: 50%; }
@@ -82,6 +94,7 @@ p:last-child { margin-bottom: 0; }
 .cart-count { min-width: 22px; padding: 1px 5px; border-radius: 100px; color: var(--forest); background: var(--yellow); text-align: center; font-size: .75rem; }
 .mobile-cart, .menu-btn { display: none; }
 
+/* Home-page hero and primary shopping actions. */
 .home-hero { display: grid; grid-template-columns: minmax(0, .89fr) minmax(0, 1.11fr); min-height: 490px; margin: 26px 0 0; border-radius: 25px; overflow: hidden; background: var(--forest); }
 .hero-copy { align-self: center; padding: clamp(32px, 4.7vw, 64px); color: #f3f1e7; }
 .hero-copy .eyebrow { display: flex; align-items: center; gap: 9px; color: #f9dd8a; }
@@ -116,6 +129,7 @@ p:last-child { margin-bottom: 0; }
 .button-outline:hover, .action-button.button-outline:hover:not(:disabled) { background: var(--light-green); }
 .text-link { display: inline-block; width: fit-content; font-weight: 720; text-decoration: underline; text-decoration-thickness: 1px; }
 
+/* Home-page links for delivery, opening hours and guest checkout. */
 .service-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 13px 4px; margin-block: 20px 48px; border-block: 1px solid var(--line); }
 .service-strip a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; text-decoration: none; }
 .service-strip a + a { border-left: 1px solid var(--line); }
@@ -125,6 +139,7 @@ p:last-child { margin-bottom: 0; }
 .service-strip strong { font-size: .95rem; }
 .service-strip small { color: var(--muted); font-size: .83rem; }
 
+/* Catalogue cards and shopping questions. */
 .featured, .home-faq { margin-bottom: 58px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 15px; margin-bottom: 22px; }
 .section-heading h2 { margin-bottom: 4px; }
@@ -149,6 +164,7 @@ p:last-child { margin-bottom: 0; }
 .home-faq summary { padding: 12px 0; color: var(--forest); font-weight: 680; cursor: pointer; }
 .home-faq details p { margin: 0 0 15px; }
 
+/* Page introductions and catalogue pagination. */
 .page-heading { max-width: 720px; margin-bottom: 28px; }
 .page-heading > p { color: var(--muted); }
 .page-heading > .eyebrow { color: var(--green); }
@@ -159,6 +175,7 @@ p:last-child { margin-bottom: 0; }
 .pagination button:not(:disabled):hover { background: var(--light-green); }
 #page-status { margin: 0; font-weight: 650; }
 
+/* Product details, related suggestions and shared quantity controls. */
 .back-row { margin-bottom: 20px; }
 .product-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(24px, 6vw, 84px); align-items: start; }
 .detail-photo { background: white; border: 1px solid var(--line); border-radius: var(--radius); }
@@ -185,6 +202,7 @@ p:last-child { margin-bottom: 0; }
 .quantity-control input { width: 55px; min-height: 44px; border: 1px solid #788a76; border-inline: 0; background: white; text-align: center; appearance: textfield; color: var(--ink); }
 .quantity-control input::-webkit-inner-spin-button, .quantity-control input::-webkit-outer-spin-button { appearance: none; }
 
+/* Delivery panels, cart items and form layouts. */
 .panel, .contact-enquiry, .contact-sidebar, .checkout-form { padding: clamp(18px, 3vw, 30px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); min-width: 0; }
 .delivery-grid, .cart-layout, .contact-layout { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(16px, 3vw, 30px); align-items: start; }
 .delivery-grid { align-items: stretch; }
@@ -203,6 +221,7 @@ p:last-child { margin-bottom: 0; }
 .cart-summary > p:not(.feedback) { color: var(--muted); margin-bottom: 15px; }
 #cart-feedback:empty { display: none; }
 
+/* Form controls, validation feedback and stall-map preview. */
 .site-form label, .checkout-form label { display: block; margin-bottom: 5px; font-weight: 670; }
 .site-form input:not([type="radio"]), .site-form textarea, .checkout-form input, .checkout-form textarea { display: block; width: 100%; min-height: 45px; padding: 9px 12px; border: 1px solid #788a76; border-radius: 8px; background: white; color: var(--ink); }
 textarea { resize: vertical; }
@@ -228,15 +247,39 @@ fieldset.contact-preferences { min-width: 0; margin-inline: 0; border: 1px solid
 .stall-map-link > span { position: absolute; inset: auto 10px 10px auto; padding: 8px 12px; color: white; background: var(--forest); border-radius: 7px; font-size: .95rem; font-weight: 690; }
 .stall-map-link:hover > span { text-decoration: underline; }
 
+/* Footer information and the floating WhatsApp enquiry link. */
 .site-footer { margin-top: auto; background: var(--forest); color: #f2f4ea; }
-.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; width: min(1200px, calc(100% - 64px)); margin: auto; padding: 26px 0; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; width: min(1200px, calc(100% - 64px)); margin: auto; padding: 22px 0 var(--chat-clearance); }
 .footer-inner p { margin-bottom: 2px; }
 .footer-brand { font-family: var(--display); font-size: 1.4rem; }
 .site-footer a { color: inherit; }
 .site-footer a:focus-visible { outline-color: var(--yellow); }
-.footer-chat { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 7px 14px; border: 1px solid #b4c3a9; border-radius: 8px; font-weight: 650; }
+/* Use safe-area insets to keep the chat button clear of mobile screen edges. */
+.floating-chat {
+  position: fixed;
+  z-index: 10;
+  inset-inline-end: max(16px, env(safe-area-inset-right, 0px));
+  inset-block-end: max(16px, env(safe-area-inset-bottom, 0px));
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: calc(100% - 32px);
+  padding: 8px 16px;
+  border: 1px solid #dce9dc;
+  border-radius: 100px;
+  background: var(--forest);
+  box-shadow: 0 4px 16px rgb(22 60 39 / 20%);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+.floating-chat:hover { background: var(--green); text-decoration: underline; }
+.floating-chat:focus-visible { outline-color: #a6540b; }
 
+/* Collapse the shared navigation on tablet and phone widths. */
 @media (max-width: 899px) {
+  :root { --header-clearance: 5.5rem; }
   .header-inner { flex-wrap: wrap; justify-content: start; gap: 0 9px; min-height: 64px; padding: 10px 0; }
   .brand { margin-right: auto; }
   .mobile-cart { display: inline-flex; }
@@ -244,8 +287,10 @@ fieldset.contact-preferences { min-width: 0; margin-inline: 0; border: 1px solid
   .has-menu-toggle .menu-btn { display: inline-flex; padding: 0 12px; border: 1px solid #788a76; background: var(--paper); color: var(--forest); }
   .has-menu-toggle #main-menu { display: none; }
   #main-menu, .has-menu-toggle #main-menu.open { display: flex; flex-wrap: wrap; flex-basis: 100%; gap: 0 18px; padding-top: 7px; }
+  .has-menu-toggle #main-menu.open { max-height: 50vh; overflow-y: auto; padding-inline: 5px; }
   .home-hero { min-height: 420px; }
 }
+/* Stack content and keep controls within a narrow phone viewport. */
 @media (max-width: 680px) {
   main, .header-inner, .footer-inner { width: calc(100% - 32px); }
   .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; }
@@ -283,6 +328,7 @@ fieldset.contact-preferences { min-width: 0; margin-inline: 0; border: 1px solid
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
 
+/* Firebase sign-in and registration pages use the same panel and form styles. */
 .account-page h1 { font-size: clamp(2.45rem, 5.4vw, 4.35rem); }
 .account-page .account-intro { color: var(--muted); }
 .account-page .site-form { margin-block: 23px 0; }

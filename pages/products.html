@@ -5,22 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Browse 21 vegetables, fruits and herbs from Mama Mboga Fresh.">
   <title>Shop produce | Mama Mboga Fresh</title>
-  <link rel="icon" type="image/webp" href="logo/brand.webp">
-  <link rel="stylesheet" href="style.css">
-  <script src="navigation.js" defer></script>
-  <script src="products-data.js" defer></script>
-  <script src="cart-store.js" defer></script>
-  <script src="cart-count.js" defer></script>
-  <script src="product-cards.js" defer></script>
-  <script src="products.js" defer></script>
-  <script type="module" src="auth-nav.js"></script>
+  <!-- Shared assets live one level above pages/. -->
+  <link rel="icon" type="image/webp" href="../logo/brand.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Load shared navigation and cart scripts before page-specific scripts. -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/products-data.js" defer></script>
+  <script src="../js/cart-store.js" defer></script>
+  <script src="../js/cart-count.js" defer></script>
+  <script src="../js/product-cards.js" defer></script>
+  <script src="../js/products.js" defer></script>
+  <script type="module" src="../js/auth-nav.js"></script>
 </head>
 <body>
+  <!-- Keyboard users can skip over the site menu. -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Keep navigation and cart access visible while scrolling. -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <img src="../logo/brand.webp" alt="" width="48" height="48">
         <span>Mama Mboga <strong>Fresh</strong></span>
       </a>
       <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
@@ -43,7 +47,9 @@
         <p>Explore fresh vegetables, fruit and herbs. Prices are indicative.</p>
         <p class="price-date">Price list updated <time datetime="2026-10-31">31 October 2026</time>.</p>
       </div>
+      <!-- products.js renders six products at a time and updates the page status. -->
       <div id="product-list" class="product-grid"></div>
+      <!-- JavaScript enables Previous and Next only when another page exists. -->
       <nav class="pagination" aria-label="Product pages">
         <button id="previous-page" type="button" disabled>← <span>Previous</span></button>
         <p id="page-status" role="status"></p>
@@ -52,12 +58,14 @@
       <noscript><p>Enable JavaScript to browse the catalogue, or <a href="https://wa.me/254755559107">ask us on WhatsApp</a> for available products.</p></noscript>
     </section>
   </main>
+  <!-- Shared address, opening hours and phone number. -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
       <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
-      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
   </footer>
+  <!-- General enquiries open in WhatsApp. Itemised orders start from the cart. -->
+  <a class="floating-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
 </body>
 </html>

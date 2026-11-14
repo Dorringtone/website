@@ -1,3 +1,4 @@
+// Paginate the catalogue and keep the current page in the URL for browser history.
 const productsPerPage = 6;
 const totalPages = Math.ceil(products.length / productsPerPage);
 const productList = document.getElementById("product-list");
@@ -20,6 +21,7 @@ function displayProducts() {
   nextButton.disabled = currentPage === totalPages;
 }
 
+// Keep page changes in browser history and focus the first product in the new set.
 function changePage(offset) {
   const page = pageFromUrl() + offset;
   if (page < 1 || page > totalPages) return;

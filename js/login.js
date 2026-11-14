@@ -1,3 +1,4 @@
+// Handle email and password sign-in, reset links, email verification and sign-out.
 import { emailError, setUpValidation } from "./form-validation.js";
 import { auth } from "./firebase-config.js";
 

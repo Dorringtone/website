@@ -1,3 +1,4 @@
+// Prepare a WhatsApp enquiry with the visitor’s preferred reply method.
 import { emailError, requiredText, setUpValidation, textLength } from "./form-validation.js";
 
 const enquiryForm = document.getElementById("enquiry-form");
@@ -49,6 +50,7 @@ const validate = setUpValidation(enquiryForm, new Map([
   [enquiryMessage, requiredText("your message", 1000)]
 ]));
 
+// The form prepares a message for the visitor to review and send in WhatsApp.
 enquiryForm.addEventListener("submit", function (event) {
   event.preventDefault();
   enquiryStatus.textContent = "";

@@ -1,3 +1,4 @@
+// Load the account script for this page and show an explanation if the Firebase SDK fails to load.
 const loginPage = document.getElementById("login-form");
 const status = document.getElementById(loginPage ? "login-status" : "register-status");
 

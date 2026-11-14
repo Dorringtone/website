@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Log in to Mama Mboga Fresh or shop and check out as a guest.">
   <title>Log in | Mama Mboga Fresh</title>
-  <link rel="icon" type="image/webp" href="logo/brand.webp">
-  <link rel="stylesheet" href="style.css">
-  <script src="navigation.js" defer></script>
-  <script src="products-data.js" defer></script>
-  <script src="cart-store.js" defer></script>
-  <script src="cart-count.js" defer></script>
-  <script type="module" src="account-page.js"></script>
-  <script type="module" src="auth-nav.js"></script>
+  <!-- Shared assets live one level above pages/. -->
+  <link rel="icon" type="image/webp" href="../logo/brand.webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Load shared navigation and cart scripts before page-specific scripts. -->
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/products-data.js" defer></script>
+  <script src="../js/cart-store.js" defer></script>
+  <script src="../js/cart-count.js" defer></script>
+  <script type="module" src="../js/account-page.js"></script>
+  <script type="module" src="../js/auth-nav.js"></script>
 </head>
 <body>
+  <!-- Keyboard users can skip over the site menu. -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Keep navigation and cart access visible while scrolling. -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="logo/brand.webp" alt="" width="48" height="48">
+        <img src="../logo/brand.webp" alt="" width="48" height="48">
         <span>Mama Mboga <strong>Fresh</strong></span>
       </a>
       <a class="mobile-cart cart-link" href="cart.html" aria-label="Cart"><span>Cart</span><span class="cart-count" aria-hidden="true" hidden></span></a>
@@ -44,6 +48,7 @@
         Connecting to the account service…
       </p>
 
+      <!-- Firebase reveals this form when no customer session is active. -->
       <div id="signed-out" hidden>
         <form id="login-form" class="site-form" method="post">
           <p>
@@ -86,6 +91,7 @@
         <p class="account-alternate">New customer? <a href="register.html">Create an account</a>.</p>
       </div>
 
+      <!-- Show verification and sign-out controls for the active customer. -->
       <div id="signed-in" hidden>
         <h2>Your account</h2>
 
@@ -120,12 +126,14 @@
       <p class="account-help">Need help? <a href="contact.html">Contact us</a>.</p>
     </section>
   </main>
+  <!-- Shared address, opening hours and phone number. -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div><p class="footer-brand">Mama Mboga Fresh</p><p>Adams Arcade, Ngong Road, Nairobi</p></div>
       <div><p>Mon–Sat, 8 a.m.–8 p.m. EAT</p><p><a href="tel:+254755559107">0755 559 107</a></p></div>
-      <a class="footer-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
   </footer>
+  <!-- General enquiries open in WhatsApp. Itemised orders start from the cart. -->
+  <a class="floating-chat" href="https://wa.me/254755559107?text=Hello%20Mama%20Mboga%20Fresh%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
 </body>
 </html>

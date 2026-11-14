@@ -1,3 +1,4 @@
+// Validate the cart and delivery fields before composing a WhatsApp draft.
 import { requiredText, setUpValidation, textLength } from "./form-validation.js";
 
 const checkoutForm = document.getElementById("checkout-form");
@@ -14,6 +15,7 @@ const validate = setUpValidation(checkoutForm, new Map([
   [deliveryInstructions, textLength(300)]
 ]));
 
+// Discard the previous draft whenever a quantity or delivery detail changes.
 function clearPreparedOrder() {
   checkoutLink.hidden = true;
   checkoutLink.removeAttribute("href");
@@ -33,6 +35,7 @@ window.addEventListener("storage", (event) => {
   if (event.key === CartStore.key || event.key === null) clearPreparedOrder();
 });
 
+// Read the latest saved cart before validating and building the message.
 checkoutForm.addEventListener("submit", (event) => {
   event.preventDefault();
   clearPreparedOrder();
@@ -77,6 +80,7 @@ checkoutForm.addEventListener("submit", (event) => {
       "Please confirm availability, delivery coverage, the delivery fee and time, the final total and payment arrangements."
     ].join("\n");
 
+    // Encode the draft as a query parameter so WhatsApp receives the original punctuation and line breaks.
     const url = new URL("https://wa.me/254755559107");
     url.searchParams.set("text", message);
     checkoutLink.href = url.href;
